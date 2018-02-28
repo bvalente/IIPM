@@ -1,0 +1,17 @@
+body {
+    font-family: Times;
+     background-color:  ;
+    }
+
+#header {
+    padding-bottom: 20px;
+    color: green;
+    font-size: 30px;
+}
+.inner_section{
+    display: none;
+}
+#texto {
+
+    font-size: 20px;
+}
