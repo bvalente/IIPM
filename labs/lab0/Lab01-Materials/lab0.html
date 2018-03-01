@@ -1,0 +1,47 @@
+<!DOCTYPE html> <html>
+
+    <head>
+        <title>SKU</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <div id="header"> title </div>
+    <body>
+        <script>
+            console.log ("Hello World!");
+
+        </script>
+        <script>
+            function changeImage() {
+            var image = document.getElementById('rgb');
+            image.src = "error.png";
+            }
+        </script>
+
+        <script>
+            function changeTextColor () {
+            document.getElementById("texto").style.color = "blue";
+        }
+        </script>
+
+        <h1>primeiro heading</h1>
+        <div id="texto">
+            <table>
+                <tr>
+                    <td>RGB, CMYK e HSV</td>
+                </tr>
+                <tr>
+                    <td>RGB</td>
+                    <td>CMYK</td>
+                    <td>HSV</td>
+                </tr>
+                <tr>
+                    <td><img id="rgb" onclick="changeImage()" src = "rgb.jpg" width="200"></td>
+
+<td><img id="rgb" onclick="changeTextColor()" src = "rgb.jpg" width="100"></td>
+                    <td><img src="cmy.gif" width="200px"></td>
+                    <td><img src="hsv.png" width="200px"></td>
+            </table>
+        </div>
+    </body>
+
+</html>
