@@ -1,0 +1,11 @@
+1. Quem vai utilizar o sistema?
+2. Que tarefas executam atualmente?
+3. Que tarefas são desejáveis?
+4. Como se aprendem as tarefas?
+5. Onde são desempenhadas as tarefas?
+6. Qual a relação entre o utilizador e a informação?
+7. Que outros instrumentos tem o utilizador?
+8. Como comunicam os utilizadores entre si?
+9. Qual a frequência de desempenho das tarefas?
+10.Quais as restrições de tempo impostas?
+11.Que acontece se algo correr mal?
