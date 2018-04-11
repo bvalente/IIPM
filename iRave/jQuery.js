@@ -3,18 +3,22 @@ jQuery(document).ready(function(){
 	const $clock = $('#clock')
 	const $lockButton = $('#lockButton');
 	const $lockScreen = $('.lockScreen');
-	/*
-	var x = $clock.width();
-	$clock.css(
-		{'height': x + 'px'}
-	);	*/
+	const $mainScreen = $('.mainScreen');
+	
 	
 	$lockButton.click(function(){
-		$lockScreen.toggle();
+		//hide everything else
+		$clock.children().hide();
+		$lockScreen.show();
 	});
 	
 	$('#touchToUnlock').click(function(){
 		$lockScreen.hide();
+		//$mainScreen.show();
+		showMenu();
 	});
 	
+	function showMenu(){
+		$('#mainWidget').css('display', 'inline-block');
+	}
 });
