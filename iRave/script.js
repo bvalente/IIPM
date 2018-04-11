@@ -1,13 +1,20 @@
 
 jQuery(document).ready(function(){
+	const $clock = $('#clock')
 	const $lockButton = $('#lockButton');
-	const $time = $('#time');
-	
-	
-	
+	const $lockScreen = $('.lockScreen');
+	/*
+	var x = $clock.width();
+	$clock.css(
+		{'height': x + 'px'}
+	);	*/
 	
 	$lockButton.click(function(){
-		$time.toggle();
+		$lockScreen.toggle();
+	});
+	
+	$('#touchToUnlock').click(function(){
+		$lockScreen.hide();
 	});
 	
 });

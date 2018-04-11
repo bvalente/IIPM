@@ -4,18 +4,21 @@
 }
 
 #exterior{
-	margin-left: 30%;
-	margin-right: 30%;
+	width:30vw;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 0;
+	padding: 0;
+	
 }
 
 #clock{
 	background-color: darkgrey;
-	width: auto;
-	height: 0;
-	
-	padding-bottom: 100%;
-	padding-top: 1px;
+	margin:0;
+	width: 30vw;
+	height: 30vw;
+	padding-bottom: 0;
+	border-top: -1px;
 
 }
 
@@ -29,7 +32,19 @@
 
 #time {
 	/*display: none;*/
-	font-size: 50px;
-	margin-top: 30%;
+	position: absolute;
+	top:20%;
+	width: inherit;
+	font-size: 200%;
+	
 	text-align: center;
+	
+}
+
+#touchToUnlock {
+	position: absolute;
+	
+	height: inherit;
+	width: inherit;
+	
 }
