@@ -3,6 +3,8 @@
 	<head>
 		<title>iRave</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="jQuery.js"></script>
 	</head>
 	<body>
 		<div id="top">
@@ -10,14 +12,26 @@
 		</div>
 		<div id="exterior">
 			<div id="clock">
+				<!-- lock Screen -->
+				<h1 class="lockScreen" id="time">09:41</h1>
+				<div class="lockScreen" id="touchToUnlock"></div>
 				
-					<p>hello</p>
+				<!-- Main Screen -->
+				<div class="mainScreen" id="mainWidget"></div>
+				
+				
+				<!-- Friends menu -->
+				<div class="friends" id="back"></div>
+				<div class="friends" id="friend"></div>
+				<div class="friends" id="friend"></div>
+				<div class="friends" id="friend"></div>
+
 				
 			</div>
 		</div>
 		<div id="bottom">
 			<button id="lockButton" type="button">
-				Lock Screen
+				Lock Button
 			</button>
 		</div>
 	</body>

@@ -4,22 +4,26 @@
 }
 
 #exterior{
-	margin-left: 30%;
-	margin-right: 30%;
-
+	width:30vw;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	padding: 0;
 	
 }
 
 #clock{
 	background-color: darkgrey;
-	width: auto;
-	height: 0;
-	
-	padding-bottom: 100%;
-	position: relative;
-	
+	margin:0;
+	width: 30vw;
+	height: 30vw;
+	padding-bottom: 0;
+	border-top: -1px;
 
-	/*height: width;*/
+}
+.mainScreen{
+	/*hide all elements on startup*/
+	display: none;
 }
 
 #lockButton {
@@ -28,4 +32,54 @@
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#time {
+	/*display: none;*/
+	position: absolute;
+	top: 10vw;
+	width: inherit;
+	font-size: 7vw;
+	
+	text-align: center;
+	
+}
+
+#touchToUnlock {
+	position: absolute;
+	
+	height: inherit;
+	width: inherit;
+	
+}
+
+#mainWidget {
+	background-color: red;
+	width:10vw;
+	height: 10vw;
+	position:absolute;
+	text-align: center;
+	top:10vw;
+	left: 0;
+	right: 0;
+	margin: 5vw auto;
+}
+
+.friends#back{
+	display: none;
+	background-color: black;
+	height: 5vw;
+	width: 5vw;
+	text-align: right;
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.friends#friend {
+	display: none;
+	height:5vw;
+	width: inherit;
+	background-color: aqua;
+	margin-top:1vw;
+	
 }
