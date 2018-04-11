@@ -32,4 +32,15 @@ jQuery(document).ready(function(){
 		//$('#mainWidget').css('display', 'inline-block');
 		$('.mainScreen').fadeIn("slow");
 	}
+	
+	$('#mainWidget').click(function(){
+		$('.friends').fadeIn();
+		$('.mainScreen').fadeOut();
+	})
+	
+	$('.friends#back').click(function(){
+		$('.friends').fadeOut();
+		$('.mainScreen').fadeIn();
+	})
+	
 });
