@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function(){
 	const $clock = $('#clock')
 	const $lockButton = $('#lockButton');
@@ -12,7 +11,7 @@ jQuery(document).ready(function(){
 		if(!lock){
 			$clock.children().fadeOut();
 			$lockScreen.show();
-			$('#time').animate({top:'0.3in', opacity:'1'}, "slow")
+			$('#time').animate({top:'0.5in', opacity:'1'}, "slow")
 			lock = true;
 		}
 
