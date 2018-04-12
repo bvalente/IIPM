@@ -42,4 +42,8 @@ jQuery(document).ready(function(){
 		$('.mainScreen').fadeIn();
 	})
 
+	$('.friends#friend').click(function(){
+		$('.friends#friend').fadeOut();
+		$('.friendFunctions').fadeIn();
+	})
 });
