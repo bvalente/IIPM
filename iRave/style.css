@@ -19,6 +19,7 @@
 	width: 1.5in;
 	height: 1.5in;
 	padding-bottom: 0;
+
 	/*border-top: -1px;*/
 
 }
@@ -62,11 +63,14 @@
 	height: 0.9in;
 	position: absolute;
 	text-align: center;
-	
 	top:0.3in;
-	
 	left: 0.3in;
+	transition: 1s;
 }
+#mainWidget:hover{
+	background: orange;
+}
+
 
 .friends#back{
 	display: none;
@@ -94,9 +98,13 @@
 	border-top-width: 0.01in;
 	border-top-style: solid;
 	border-top-color: black;
-	
-
+	/*transition: 2s;*/
 }
+/*
+.friends#friend:hover{
+	font-weight:bold;
+
+}*/
 #perfilImage {
 	background-color: yellow;
 	display: none;
@@ -114,4 +122,23 @@
 	width: inherit;
 	background-color: green;
 	margin-top: 0.03in;
+	/*font: SF Compact Text;*/
+
 }
+
+
+/*
+#notificationsTab{
+	display: none;
+	position: relative;
+	width: 1in;
+	height: 0.18in;
+	left:0.25in;
+	margin-top: 0.02in;
+	text-align: center;
+
+}*/
+/*
+.notifications{
+	display: none;
+}*/

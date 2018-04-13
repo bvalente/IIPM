@@ -3,9 +3,10 @@ jQuery(document).ready(function(){
 	const $lockButton = $('#lockButton');
 	const $lockScreen = $('.lockScreen');
 	const $mainScreen = $('.mainScreen');
-	const MAIN_MENU = 0;
-	const FRIEND_LIST = 1;
-	const FRIEND_VIEW = 2;
+	const LOCK_SCREEN = 0;
+	const MAIN_MENU = 1;
+	const FRIEND_LIST = 2;
+	const FRIEND_VIEW = 3;
 	var lock = true;
 	var menu = 0;
 
@@ -14,24 +15,37 @@ jQuery(document).ready(function(){
 			clock.children().fadeOut();
 			$('.lockScreen').fadeIn("fast");
 			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
-			lock = true;
+
 		}
+		lock = true;
+		menu = LOCK_SCREEN;
 	}
-	
+
 	function unLockScreen(){
 		lock = false;
-		$('#time').animate({top:'0in', opacity:'0.1'}, "slow");
-		loadMainMenu();
-	}
-	
-	function loadMainMenu(){
-		clock.children().fadeOut(function(){
-			$('.mainScreen').fadeIn();
+		menu = LOCK_SCREEN;
+		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
+			clock.children().fadeOut(function(){
+				$('.mainScreen').fadeIn();
+			});
 		});
+
+	}
+
+	function loadMainMenu(){
+		menu = MAIN_MENU;
+		mutex = true;
+		clock.children().fadeOut();
+		$('.mainScreen').fadeIn();
+	}
+
+	function loadFriendsList(){
+		menu = FRIEND_LIST;
+		clock.children().fadeOut("fast");
+		$('.friends').delay("fast").fadeIn();
 	}
 
 	$lockButton.click(function(){
-		//hide everything else
 		lockScreen();
 	});
 
@@ -40,13 +54,10 @@ jQuery(document).ready(function(){
 	});
 
 
-
 	$('#mainWidget').click(function(){
-		$('.friends').fadeIn();
-		$('.mainScreen').fadeOut();
-		menu = FRIEND_LIST;
+		loadFriendsList();
 	});
-	
+
 
 	$('#back').click(function(){
 		$('.friends').fadeOut();
@@ -71,6 +82,6 @@ jQuery(document).ready(function(){
 		$('.friends#friend').fadeOut(function(){
 			$('.friendFunctions').fadeIn();
 		});
-		
+
 	});
 });
