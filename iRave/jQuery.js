@@ -10,34 +10,33 @@ jQuery(document).ready(function(){
 	var menu = 0;
 
 	function lockScreen(){
-		clock.children().fadeOut(function(){
-			$('.mainScreen').fadeIn("slow");
-			$('#time').animate({top:'0.4', opacity:'1'}, "slow")
-		});
+		if(!lock){
+			clock.children().fadeOut();
+			$('.lockScreen').fadeIn("fast");
+			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
+			lock = true;
+		}
+	}
+	
+	function unLockScreen(){
+		lock = false;
+		$('#time').animate({top:'0in', opacity:'0.1'}, "slow");
+		loadMainMenu();
 	}
 	
 	function loadMainMenu(){
-		
-
+		clock.children().fadeOut(function(){
+			$('.mainScreen').fadeIn();
+		});
 	}
 
 	$lockButton.click(function(){
 		//hide everything else
-		if(!lock){
-			lockScreen();
-			lock = true;
-		}
-
+		lockScreen();
 	});
 
 	$('#touchToUnlock').click(function(){
-		lock = false;
-		$('#time').animate({top:'0in',opacity:'0.1'}, "slow", function(){
-			$lockScreen.fadeOut('fast');
-		} );
-		//$lockScreen.hide();
-		//$mainScreen.show();
-		showMenu();
+		unLockScreen();
 	});
 
 
@@ -45,7 +44,7 @@ jQuery(document).ready(function(){
 	$('#mainWidget').click(function(){
 		$('.friends').fadeIn();
 		$('.mainScreen').fadeOut();
-		menu = friendsList;
+		menu = FRIEND_LIST;
 	});
 	
 
