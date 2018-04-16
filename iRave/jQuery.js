@@ -9,6 +9,7 @@ jQuery(document).ready(function(){
 	const FRIEND_VIEW = 3;
 	var lock = true;
 	var menu = 0;
+	var mutex = false; //true if blocked
 
 	function lockScreen(){
 		if(!lock){
@@ -33,16 +34,37 @@ jQuery(document).ready(function(){
 	}
 
 	function loadMainMenu(){
-		menu = MAIN_MENU;
+		if(mutex) return;
 		mutex = true;
-		clock.children().fadeOut();
-		$('.mainScreen').fadeIn();
+		
+		menu = MAIN_MENU;
+		clock.children().fadeOut("fast");
+		$('.mainScreen').delay("fast").fadeIn();
+		
+		mutex = false;
 	}
 
 	function loadFriendsList(){
+		if (mutex) return;
+		mutex = true;
+		
 		menu = FRIEND_LIST;
-		clock.children().fadeOut("fast");
+		clock.children().not("#back").fadeOut("fast");
 		$('.friends').delay("fast").fadeIn();
+		
+		mutex = false;
+	}
+	
+	function loadFriend( name ){
+		if(mutex) return;
+		mutex = true;
+		
+		menu = FRIEND_VIEW;
+		$('.friends#friend').fadeOut("fast");
+		//TODO
+		$('.friendFunctions').delay("fast").fadeIn();
+		
+		mutex = false;
 	}
 
 	$lockButton.click(function(){
@@ -60,28 +82,24 @@ jQuery(document).ready(function(){
 
 
 	$('#back').click(function(){
+		/*
 		$('.friends').fadeOut();
 		$('.mainScreen').fadeIn();
+		*/
 		switch(menu){
-			case 2://friend view, load friendList
+			case FRIEND_VIEW://friend view, load friendList
 				loadFriendsList();
-				menu = FRIEND_LIST;
 				break;
-			case 1://friendList, load main menu
+			case FRIEND_LIST://friendList, load main menu
 				loadMainMenu();
-				menu = FRIEND_VIEW;
 				break;
 			default: //error, load main menu
-				loadMenu();
-				menu = MAIN_MENU;
+				loadMainMenu();
 				break;
 				   }
 	});
 
 	$('.friends#friend').click(function(){
-		$('.friends#friend').fadeOut(function(){
-			$('.friendFunctions').fadeIn();
-		});
-
+		loadFriend("name123");
 	});
 });
