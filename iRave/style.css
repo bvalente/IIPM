@@ -86,7 +86,7 @@
 	border: 0;
 }
 
-.friends#friend {
+.friends[id^="friend"] {
 	display: none;
 	display: relative;
 	height:0.39in;
@@ -106,18 +106,19 @@
 
 }*/
 #perfilImage {
-	background-color: yellow;
+	/*background-color: yellow;*/
 	display: none;
-	width:0.38in;
-	height: 0.38in;
+	width:0.4in;
+	height: 0.4in;
 	position: relative;
 	top:0in;
 	left: 0;
 	right: 0;
-	margin: 0.02in auto;
+	margin: 0 0.55in;
 }
 #showLocation, #MeetingLocation{
 	display: none;
+	position: relative;
 	height: 0.25in;
 	width: inherit;
 	background-color: green;

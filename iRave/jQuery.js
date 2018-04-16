@@ -60,8 +60,9 @@ jQuery(document).ready(function(){
 		mutex = true;
 		
 		menu = FRIEND_VIEW;
-		$('.friends#friend').fadeOut("fast");
+		$('.friends[id^=friend]').fadeOut("fast");
 		//TODO
+		$('#perfilImage').attr("src","resources/friend-" + name + ".png");
 		$('.friendFunctions').delay("fast").fadeIn();
 		
 		mutex = false;
@@ -79,7 +80,16 @@ jQuery(document).ready(function(){
 	$('#mainWidget').click(function(){
 		loadFriendsList();
 	});
-
+	
+	$('.friends#friend1').click(function(){
+		loadFriend("name1");
+	});
+	$('.friends#friend2').click(function(){
+		loadFriend("name2");
+	});
+	$('.friends#friend3').click(function(){
+		loadFriend("name3");
+	});
 
 	$('#back').click(function(){
 		/*
@@ -99,7 +109,5 @@ jQuery(document).ready(function(){
 				   }
 	});
 
-	$('.friends#friend').click(function(){
-		loadFriend("name123");
-	});
+
 });
