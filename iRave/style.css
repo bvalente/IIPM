@@ -13,12 +13,13 @@
 }
 
 #clock{
-	background-color: darkgrey;
+	background-color: #cccccc;
 	position:relative;/*absolute*/
 	margin:0;
 	width: 1.5in;
 	height: 1.5in;
 	padding-bottom: 0;
+	border-radius: 0.04in;
 
 	/*border-top: -1px;*/
 
@@ -102,7 +103,7 @@
 }
 /*
 .friends#friend:hover{
-	font-weight:bold;
+font-weight:bold;
 
 }*/
 #perfilImage {
@@ -128,18 +129,49 @@
 }
 
 
-/*
-#notificationsTab{
-	display: none;
-	position: relative;
-	width: 1in;
-	height: 0.18in;
-	left:0.25in;
-	margin-top: 0.02in;
-	text-align: center;
 
-}*/
-/*
-.notifications{
+#notificationsTab{
+	position: relative;
+	height: 0.18in;
+	top: 0.07in;
+	left: 15%;
+	width: 70%;
+	background-color: #e6e6e6;
+
+	text-align: center;
+	font-family: Verdana;
+	font-size: 0.13in;
+
+	border-radius: 0.05in;
+	border: 0.006in solid #e6e6e6;
+	opacity: 0.6;
+	transition: 0.7s;
+}
+
+#notificationsTab:hover {
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+	opacity: 1.0;
+
+}
+#divv{
 	display: none;
-}*/
+	height: 0.3in;
+	width: 0.3in;
+	background-color: pink;
+}
+
+
+@keyframes shake {
+	10%, 90% {
+		transform: translate3d(-0.008in, 0, 0);
+	} 20%, 80% {
+		transform: translate3d(0.01in, 0, 0);
+	} 30%, 50%, 70% {
+		transform: translate3d(-0.01in, 0, 0);
+	} 40%, 60% {
+		transform: translate3d(0.01in, 0, 0);
+	}
+}

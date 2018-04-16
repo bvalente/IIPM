@@ -7,6 +7,8 @@ jQuery(document).ready(function(){
 	const MAIN_MENU = 1;
 	const FRIEND_LIST = 2;
 	const FRIEND_VIEW = 3;
+	const NOT_VIEW = 4;
+
 	var lock = true;
 	var menu = 0;
 	var mutex = false; //true if blocked
@@ -36,35 +38,46 @@ jQuery(document).ready(function(){
 	function loadMainMenu(){
 		if(mutex) return;
 		mutex = true;
-		
+
 		menu = MAIN_MENU;
 		clock.children().fadeOut("fast");
 		$('.mainScreen').delay("fast").fadeIn();
-		
+
 		mutex = false;
 	}
 
 	function loadFriendsList(){
 		if (mutex) return;
 		mutex = true;
-		
+
 		menu = FRIEND_LIST;
 		clock.children().not("#back").fadeOut("fast");
 		$('.friends').delay("fast").fadeIn();
-		
+
 		mutex = false;
 	}
-	
+
 	function loadFriend( name ){
 		if(mutex) return;
 		mutex = true;
-		
+
 		menu = FRIEND_VIEW;
 		$('.friends[id^=friend]').fadeOut("fast");
 		//TODO
 		$('#perfilImage').attr("src","resources/friend-" + name + ".png");
 		$('.friendFunctions').delay("fast").fadeIn();
-		
+
+		mutex = false;
+	}
+
+	function loadNotificationsMenu(){
+		if (mutex) return;
+		mutex = true;
+
+		menu = NOT_VIEW
+		clock.children().fadeOut("fast");
+		$('.notificationsMenu').delay("fast").fadeIn();
+
 		mutex = false;
 	}
 
@@ -80,7 +93,7 @@ jQuery(document).ready(function(){
 	$('#mainWidget').click(function(){
 		loadFriendsList();
 	});
-	
+
 	$('.friends#friend1').click(function(){
 		loadFriend("name1");
 	});
@@ -108,6 +121,10 @@ jQuery(document).ready(function(){
 				break;
 				   }
 	});
+
+	$('#notificationsTab').click(function(){
+		loadNotificationsMenu();
+	})
 
 
 });
