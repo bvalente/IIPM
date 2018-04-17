@@ -30,7 +30,7 @@
 	margin-right: auto;
 }
 
-#clock > div{
+#clock > div:not(.lockScreen){
 	position: relative;
 	width: inherit;
 	height: inherit;
@@ -77,6 +77,10 @@
 	background: orange;
 }
 
+.subMenus > div{
+	display: none;
+}
+
 .subMenus #back{
 	/*display: none;*/
 	height: 0.3in;
@@ -90,8 +94,6 @@
 }
 
 .friendsList > div {
-	display: none;
-	display: relative;
 	height:0.39in;
 	width: inherit;
 	/*background-color: aqua;*/
@@ -103,14 +105,8 @@
 	border-top-color: black;
 	/*transition: 2s;*/
 }
-/*
-.friends#friend:hover{
-font-weight:bold;
 
-}*/
 #perfilImage {
-	/*background-color: yellow;*/
-	display: none;
 	width:0.4in;
 	height: 0.4in;
 	position: relative;
@@ -121,18 +117,31 @@ font-weight:bold;
 }
 
 #showLocation, #MeetingLocation{
-	display: none;
 	position: relative;
-	height: 0.25in;
-	width: inherit;
+	height: 0.45in;
+	width: 80%;
+	border-radius: 0.07in;
+	left: 10%;
 	background-color: green;
 	margin-top: 0.03in;
-	/*font: SF Compact Text;*/
-}
+	margin-left: 0;
 
+	text-align: center;
+	font-family: Verdana;
+	font-size: 0.13in;
+	transition: 0.3s;
+	opacity: 0.8;
+	line-height: 0.45in;
+
+}
+#MeetingLocation:hover,#showLocation:hover{
+	opacity: 1.0;
+	font-size: 0.15in;
+
+}
 #notificationsTab{
 	position: relative;
-	height: 0.18in;
+	height: 0.15in;
 	top: 0.07in;
 	left: 15%;
 	width: 70%;
@@ -154,6 +163,7 @@ font-weight:bold;
 	backface-visibility: hidden;
 	perspective: 1000px;
 	opacity: 1.0;
+
 
 }
 

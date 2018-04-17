@@ -3,6 +3,7 @@ jQuery(document).ready(function(){
 	const $lockButton = $('#lockButton');
 	const $lockScreen = $('.lockScreen');
 	const $mainScreen = $('.mainScreen');
+	const subMenus = $('.subMenus');
 	const LOCK_SCREEN = 0;
 	const MAIN_MENU = 1;
 	const FRIEND_LIST = 2;
@@ -28,7 +29,7 @@ jQuery(document).ready(function(){
 
 	function unLockScreen(){
 		lock = false;
-		menu = LOCK_SCREEN;
+		menu = MAIN_MENU;
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
 			clock.children().fadeOut("fast");
 			$('.mainScreen').delay("fast").fadeIn();
@@ -47,25 +48,33 @@ jQuery(document).ready(function(){
 	}
 
 	function loadFriendsMenu(){ //after unlock screen
+
 		if(mutex) return;
 		mutex = true;
+		if (menu == FRIEND_LIST){
+			subMenus.children().not("#back").fadeOut("fast");
+			$('.friendsMenu').delay("fast").fadeIn();
+		}
+		else {
+			console.log("cer");
+			$mainScreen.delay("fast").fadeOut();
+			
+			$('#back').delay("fast").fadeIn();
+			$('.friendsMenu').delay("fast").fadeIn();
+		}
+
 		menu = FRIEND_MENU;
-
-		clock.children().fadeOut("fast");
-		$('#back').delay("fast").fadeIn();
-		$('.friendsMenu').delay("fast").fadeIn();
-
 		mutex = false;
 	}
 
 	function loadFriendsList(){ //after friends menu
 		if(mutex) return;
 		mutex = true;
+
 		menu = FRIEND_LIST;
 
-		clock.children().not("#back").fadeOut(function(){
-			$('.friendList').fadeIn();
-		});
+		subMenus.children().not("#back").fadeOut("fast");
+		$('.friendsList').delay("fast").fadeIn();
 
 		mutex = false;
 	}
@@ -96,7 +105,9 @@ jQuery(document).ready(function(){
 		unLockScreen();
 	});
 
-
+	$("#showLocation,#MeetingLocation").click(function(){
+		loadFriendsList();
+	});
 	$('#mainWidget').click(function(){
 		loadFriendsMenu();
 	});
@@ -116,7 +127,7 @@ jQuery(document).ready(function(){
 				loadMainMenu();
 				break;
 			case FRIEND_LIST://friendList, load main menu
-				loadFriendsList();
+				loadFriendsMenu();
 				break;
 			case NOT_VIEW:
 				lockScreen();
