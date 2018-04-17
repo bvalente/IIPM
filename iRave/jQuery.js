@@ -3,11 +3,10 @@ jQuery(document).ready(function(){
 	const $lockButton = $('#lockButton');
 	const $lockScreen = $('.lockScreen');
 	const $mainScreen = $('.mainScreen');
-	const subMenus = $('.subMenus');
 	const LOCK_SCREEN = 0;
 	const MAIN_MENU = 1;
 	const FRIEND_LIST = 2;
-	const FRIEND_MENU = 3;
+	const FRIEND_VIEW = 3;
 	const NOT_VIEW = 4;
 
 	var lock = true;
@@ -15,9 +14,7 @@ jQuery(document).ready(function(){
 	var mutex = false; //true if blocked
 
 	function lockScreen(){
-		console.log('Locked')
 		if(!lock){
-			console.log('in if')
 			clock.children().fadeOut();
 			$('.lockScreen').fadeIn("fast");
 			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
@@ -29,11 +26,13 @@ jQuery(document).ready(function(){
 
 	function unLockScreen(){
 		lock = false;
-		menu = MAIN_MENU;
+		menu = LOCK_SCREEN;
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
-			clock.children().fadeOut("fast");
-			$('.mainScreen').delay("fast").fadeIn();
+			clock.children().fadeOut(function(){
+				$('.mainScreen').fadeIn();
+			});
 		});
+
 	}
 
 	function loadMainMenu(){
@@ -42,57 +41,44 @@ jQuery(document).ready(function(){
 
 		menu = MAIN_MENU;
 		clock.children().fadeOut("fast");
+		$('.Friends[id^=Friends]').fadeIn("fast");
+		$('#Friends').attr("src","resources/Friend-icon.png");
 		$('.mainScreen').delay("fast").fadeIn();
 
 		mutex = false;
 	}
 
-	function loadFriendsMenu(){ //after unlock screen
-
-		if(mutex) return;
-		mutex = true;
-		if (menu == FRIEND_LIST){
-			subMenus.children().not("#back").fadeOut("fast");
-			$('.friendsMenu').delay("fast").fadeIn();
-		}
-		else {
-			console.log("cer");
-			$mainScreen.delay("fast").fadeOut();
-			
-			$('#back').delay("fast").fadeIn();
-			$('.friendsMenu').delay("fast").fadeIn();
-		}
-
-		menu = FRIEND_MENU;
-		mutex = false;
-	}
-
-	function loadFriendsList(){ //after friends menu
-		if(mutex) return;
+	function loadFriendsList(){
+		if (mutex) return;
 		mutex = true;
 
 		menu = FRIEND_LIST;
+		clock.children().not("#back").fadeOut("fast");
+		$('.friends').delay("fast").fadeIn();
 
-		subMenus.children().not("#back").fadeOut("fast");
-		$('.friendsList').delay("fast").fadeIn();
+		mutex = false;
+	}
+
+	function loadFriend( name ){
+		if(mutex) return;
+		mutex = true;
+
+		menu = FRIEND_VIEW;
+		$('.friends[id^=friend]').fadeOut("fast");
+		//TODO
+		$('#perfilImage').attr("src","resources/friend-" + name + ".png");
+		$('.friendFunctions').delay("fast").fadeIn();
 
 		mutex = false;
 	}
 
 	function loadNotificationsMenu(){
-		lock = false;
 		if (mutex) return;
 		mutex = true;
-		menu = NOT_VIEW;
 
-		console.log(menu);
-
-		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
-			clock.children().fadeOut("slow");
-			//add a delay
-			$('.notificationsMenu').delay("slow").fadeIn();
-			$('#back').delay("slow").fadeIn();
-		});
+		menu = NOT_VIEW
+		clock.children().fadeOut("fast");
+		$('.notificationsMenu').delay("fast").fadeIn();
 
 		mutex = false;
 	}
@@ -105,15 +91,23 @@ jQuery(document).ready(function(){
 		unLockScreen();
 	});
 
-	$("#showLocation,#MeetingLocation").click(function(){
+
+	$('#mainWidget').click(function(){
 		loadFriendsList();
 	});
-	$('#mainWidget').click(function(){
-		loadFriendsMenu();
+
+	$('#Friends').click(function(){
+		loadFriendsList();
 	});
 
-	$('#notificationsTab').click(function(){
-		loadNotificationsMenu();
+	$('.friends#friend1').click(function(){
+		loadFriend("name1");
+	});
+	$('.friends#friend2').click(function(){
+		loadFriend("name2");
+	});
+	$('.friends#friend3').click(function(){
+		loadFriend("name3");
 	});
 
 	$('#back').click(function(){
@@ -121,21 +115,22 @@ jQuery(document).ready(function(){
 		$('.friends').fadeOut();
 		$('.mainScreen').fadeIn();
 		*/
-		console.log('menu is ' + menu)
 		switch(menu){
-			case FRIEND_MENU://friend MENU, load friendList
-				loadMainMenu();
+			case FRIEND_VIEW://friend view, load friendList
+				loadFriendsList();
 				break;
 			case FRIEND_LIST://friendList, load main menu
-				loadFriendsMenu();
-				break;
-			case NOT_VIEW:
-				lockScreen();
+				loadMainMenu();
 				break;
 			default: //error, load main menu
-				console.log('defaulted')
 				loadMainMenu();
 				break;
 				   }
 	});
+
+	$('#notificationsTab').click(function(){
+		loadNotificationsMenu();
+	})
+
+
 });

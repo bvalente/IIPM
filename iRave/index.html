@@ -13,47 +13,36 @@
 		<div id="exterior">
 			<div id="clock">
 				<!-- lock Screen -->
-				<div class="lockScreen">
-					<h1 id="time">09:41</h1>
-					<div id="touchToUnlock"></div>
-					<div id="notificationsTab"> notifications </div>
-				</div>
+				<h1 class="lockScreen" id="time">04:20</h1>
+				<div class="lockScreen" id="touchToUnlock"></div>
 
 				<!-- Main Screen -->
-				<div class="mainScreen">
-					<div id="mainWidget"></div>
-				</div>
-
-				<!-- subMenus -->
-				<div class ="subMenus">
-
-					<img id="back" src="resources/iconmonstr-undo-1-240.png">
-
-					<!-- Friends menu -->
-					<div class="friendsList">
-						<div id="friend1"></div>
-						<div id="friend2"></div>
-						<div id="friend3"></div>
-					</div>
-
-					<!-- Friend Functions -->
-					<div class="friendsMenu">
-					<!-- 	<img id="perfilImage" src="resources/friend.png"> -->
-						<div id="showLocation"> Show Location</div>
-						<div id="MeetingLocation"> Meeting Point</div>
-					</div>
-
-					<!--Notifications -->
-					<div class="notificationsMenu">
-						<div id="divv"></div>
-					</div>
-
-					<!-- Show Location Menu -->
+				<div class="mainScreen" id="mainWidget"></div>
+				<div class="mainScreen" id="Friends"></div>
 
 
-				</div>
-			</div><!--clock-->
-		</div><!--exterior-->
+				<!-- Friends menu -->
+				<img class="friends" id="back"
+					 src="resources/iconmonstr-undo-1-240.png">
+				<div class="friends" id="friend1"></div>
+				<div class="friends" id="friend2"></div>
+				<div class="friends" id="friend3"></div>
+
+
+				<!-- Friend Functions -->
+				<img class="friendFunctions" id="perfilImage"
+				   src="resources/friend.png">
+				<div class="friendFunctions" id="showLocation"></div>
+				<div class="friendFunctions" id="MeetingLocation"></div>
+
+				<!-- Notifications -->
+
+				<div class="lockScreen" class="notifications" id="notificationsTab"> notifications </div>
+				<div class="notificationsMenu" id="divv">Mike Wazowski</div>
+
+				<!-- Show Location Menu -->
+			</div>
+		</div>
 		<div id="bottom">
 			<button id="lockButton" type="button">
 				Lock Button
