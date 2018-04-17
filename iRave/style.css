@@ -1,3 +1,4 @@
+
 #top, #bottom{
 	height: 50px;
 	margin:0;
@@ -9,7 +10,6 @@
 	margin-right: auto;
 	margin-top: 0;
 	padding: 0;
-
 }
 
 #clock{
@@ -19,14 +19,7 @@
 	width: 1.5in;
 	height: 1.5in;
 	padding-bottom: 0;
-	border-radius: 0.04in;
-
-	/*border-top: -1px;*/
-
-}
-.mainScreen{
-	/*hide all elements on startup*/
-	display: none;
+	/*border-radius: 0.04in;*/
 }
 
 #lockButton {
@@ -37,23 +30,34 @@
 	margin-right: auto;
 }
 
-#time {
-	/*display: none;*/
+#clock > div{
+	position: relative;
+	width: inherit;
+	height: inherit;
+	display: none;
+}
+
+.lockScreen{
+	position: relative;
+	width: inherit;
+	height: inherit;
+	display: block;
+}
+
+.lockScreen #time {
 	position: absolute;
-	/*top: 0.5in;*/
 	width: inherit;
 	font-size: 0.6in;
 	top:0.4in;
 	margin:0;
 	text-align: center;
-
 }
 
 #touchToUnlock {
 	position: absolute;
-	top:0;
-	height: inherit;
+	top:0.25in;
 	width: inherit;
+	height: 1.25in;
 	margin:0;
 	padding: 0;
 }
@@ -68,15 +72,13 @@
 	left: 0.3in;
 	transition: 1s;
 }
+
 #mainWidget:hover{
 	background: orange;
 }
 
-
-.friends#back{
-	display: none;
-	/*background-color: black;*/
-	display: relative;
+.subMenus #back{
+	/*display: none;*/
 	height: 0.3in;
 	width: 0.3in;
 	text-align: right;
@@ -87,7 +89,7 @@
 	border: 0;
 }
 
-.friends[id^="friend"] {
+.friendsList > div {
 	display: none;
 	display: relative;
 	height:0.39in;
@@ -117,6 +119,7 @@ font-weight:bold;
 	right: 0;
 	margin: 0 0.55in;
 }
+
 #showLocation, #MeetingLocation{
 	display: none;
 	position: relative;
@@ -125,10 +128,7 @@ font-weight:bold;
 	background-color: green;
 	margin-top: 0.03in;
 	/*font: SF Compact Text;*/
-
 }
-
-
 
 #notificationsTab{
 	position: relative;
@@ -149,20 +149,29 @@ font-weight:bold;
 }
 
 #notificationsTab:hover {
-	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
+	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) 1.5;
 	transform: translate3d(0, 0, 0);
 	backface-visibility: hidden;
 	perspective: 1000px;
 	opacity: 1.0;
 
 }
-#divv{
+
+.notificationsMenu{
 	display: none;
-	height: 0.3in;
-	width: 0.3in;
-	background-color: pink;
 }
 
+#divv{
+	display: none;
+
+	width: 0.3in;
+	height: 0.9in;
+	position: absolute;
+	text-align: center;
+	top:0.3in;
+	left: 0.3in;
+	background-color: pink;
+}
 
 @keyframes shake {
 	10%, 90% {

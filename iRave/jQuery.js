@@ -6,7 +6,7 @@ jQuery(document).ready(function(){
 	const LOCK_SCREEN = 0;
 	const MAIN_MENU = 1;
 	const FRIEND_LIST = 2;
-	const FRIEND_VIEW = 3;
+	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
 
 	var lock = true;
@@ -14,7 +14,9 @@ jQuery(document).ready(function(){
 	var mutex = false; //true if blocked
 
 	function lockScreen(){
+		console.log('Locked')
 		if(!lock){
+			console.log('in if')
 			clock.children().fadeOut();
 			$('.lockScreen').fadeIn("fast");
 			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
@@ -28,11 +30,9 @@ jQuery(document).ready(function(){
 		lock = false;
 		menu = LOCK_SCREEN;
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
-			clock.children().fadeOut(function(){
-				$('.mainScreen').fadeIn();
-			});
+			clock.children().fadeOut("fast");
+			$('.mainScreen').delay("fast").fadeIn();
 		});
-
 	}
 
 	function loadMainMenu(){
@@ -46,37 +46,44 @@ jQuery(document).ready(function(){
 		mutex = false;
 	}
 
-	function loadFriendsList(){
-		if (mutex) return;
+	function loadFriendsMenu(){ //after unlock screen
+		if(mutex) return;
 		mutex = true;
+		menu = FRIEND_MENU;
 
-		menu = FRIEND_LIST;
-		clock.children().not("#back").fadeOut("fast");
-		$('.friends').delay("fast").fadeIn();
+		clock.children().fadeOut("fast");
+		$('#back').delay("fast").fadeIn();
+		$('.friendsMenu').delay("fast").fadeIn();
 
 		mutex = false;
 	}
 
-	function loadFriend( name ){
+	function loadFriendsList(){ //after friends menu
 		if(mutex) return;
 		mutex = true;
+		menu = FRIEND_LIST;
 
-		menu = FRIEND_VIEW;
-		$('.friends[id^=friend]').fadeOut("fast");
-		//TODO
-		$('#perfilImage').attr("src","resources/friend-" + name + ".png");
-		$('.friendFunctions').delay("fast").fadeIn();
+		clock.children().not("#back").fadeOut(function(){
+			$('.friendList').fadeIn();
+		});
 
 		mutex = false;
 	}
 
 	function loadNotificationsMenu(){
+		lock = false;
 		if (mutex) return;
 		mutex = true;
+		menu = NOT_VIEW;
 
-		menu = NOT_VIEW
-		clock.children().fadeOut("fast");
-		$('.notificationsMenu').delay("fast").fadeIn();
+		console.log(menu);
+
+		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
+			clock.children().fadeOut("slow");
+			//add a delay
+			$('.notificationsMenu').delay("slow").fadeIn();
+			$('#back').delay("slow").fadeIn();
+		});
 
 		mutex = false;
 	}
@@ -91,17 +98,11 @@ jQuery(document).ready(function(){
 
 
 	$('#mainWidget').click(function(){
-		loadFriendsList();
+		loadFriendsMenu();
 	});
 
-	$('.friends#friend1').click(function(){
-		loadFriend("name1");
-	});
-	$('.friends#friend2').click(function(){
-		loadFriend("name2");
-	});
-	$('.friends#friend3').click(function(){
-		loadFriend("name3");
+	$('#notificationsTab').click(function(){
+		loadNotificationsMenu();
 	});
 
 	$('#back').click(function(){
@@ -109,22 +110,21 @@ jQuery(document).ready(function(){
 		$('.friends').fadeOut();
 		$('.mainScreen').fadeIn();
 		*/
+		console.log('menu is ' + menu)
 		switch(menu){
-			case FRIEND_VIEW://friend view, load friendList
-				loadFriendsList();
-				break;
-			case FRIEND_LIST://friendList, load main menu
+			case FRIEND_MENU://friend MENU, load friendList
 				loadMainMenu();
 				break;
+			case FRIEND_LIST://friendList, load main menu
+				loadFriendsList();
+				break;
+			case NOT_VIEW:
+				lockScreen();
+				break;
 			default: //error, load main menu
+				console.log('defaulted')
 				loadMainMenu();
 				break;
 				   }
 	});
-
-	$('#notificationsTab').click(function(){
-		loadNotificationsMenu();
-	})
-
-
 });
