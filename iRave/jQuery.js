@@ -129,6 +129,22 @@ jQuery(document).ready(function(){
 		mutex = false;
 	}
 
+	function point_it(event){ //after friends menu
+
+		if(mutex) return;
+		mutex = true;
+
+		var x = event.clientX;
+    	var y = event.clientY;
+    	var snowball = document.getElementById("Pointer");
+    	snowball.style.display = '';
+    	snowball.style.position = 'absolute';
+    	snowball.style.left = x + 'px';
+    	snowball.style.top = y + 'px';
+
+		mutex = false;
+	}
+
 	$lockButton.click(function(){
 		lockScreen();
 	});
@@ -151,6 +167,10 @@ jQuery(document).ready(function(){
 
 	$('#notificationsTab').click(function(){
 		loadNotificationsMenu();
+	});
+
+	$('#mapImage').click(function(){
+		point_it(event);
 	});
 
 	$(".friendsList").click(function(){//
