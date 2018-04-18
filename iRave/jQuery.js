@@ -60,7 +60,7 @@ jQuery(document).ready(function(){
 		menu = OPT_MENU;
 		subMenus.children().not("#back").fadeOut("fast");
 		$(".Map").delay("fast").fadeIn();
-		
+
 		mutex = false;
 	}
 
@@ -153,7 +153,7 @@ jQuery(document).ready(function(){
 		loadNotificationsMenu();
 	});
 
-	$(".friendsList").click(function(){
+	$(".friendsList").click(function(){//
 		if (option == SHARE){
 			loadOptionShare();
 		}
@@ -173,6 +173,7 @@ jQuery(document).ready(function(){
 		$("#shareMessage").fadeOut();
 		loadMainMenu();
 	});
+
 
 	$('#back').click(function(){
 		console.log('menu is ' + menu)
