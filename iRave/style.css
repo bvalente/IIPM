@@ -63,6 +63,9 @@
 
 }
 
+#touchToUnlock:hover > #time{
+	color :#ffffff;
+}
 
 #touchToUnlock {
 	position: absolute;
@@ -71,10 +74,12 @@
 	height: 1.25in;
 	margin:0;
 	padding: 0;
+	transition: 1s;
+	color:#d9d9d9;
 }
 
 #mainWidget {
-	background-color: red;
+	background-color: #cc0000 ;
 	width:0.9in;
 	height: 0.9in;
 	position: absolute;
@@ -99,10 +104,19 @@
 
 .btn {
 	display: none;
+	border-radius: 2px;
+	border: 0.5px solid #4CAF50;
+	transition-duration: 0.4s;
+
+}
+#done:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
 }
 .subMenus > div{
 	display: none;
 }
+
 
 #shareMessage{
 	width:0.9in;
@@ -116,6 +130,7 @@
 
 	opacity: 0.85;
 	transition: 1s;
+
 } #shareMessage:hover{
 	opacity: 1.0;
 }
@@ -146,13 +161,14 @@
 }
 
 .friendsList{
-	height: 1.15in;
+	height: 1.185in;
 	overflow: auto;
 	background-color: #e6e6e6;
-
 	transition: 1s;
-
+	border-radius: 0in 0in 0.12in 0.12in;
 }
+
+
 
 .friendsList p{ /*paragraph*/
 	float:right;
@@ -184,6 +200,10 @@
 	font-size: 0.16in;
 
 }
+#mapImage{
+	border-radius: 0.03in 0.03in 0.12in 0.12in;
+
+}
 
 .imgf{
 	float:left;
@@ -206,7 +226,7 @@
 	width: 80%;
 	border-radius: 0.07in;
 	left: 10%;
-	background-color: green;
+	background-color: #e6e6e6;
 	margin-top: 0.03in;
 	margin-left: 0;
 
@@ -220,6 +240,7 @@
 }
 #MeetingLocation:hover,#shareLocation:hover{
 	opacity: 1.0;
+	background-color: green;
 	font-size: 0.15in;
 
 }

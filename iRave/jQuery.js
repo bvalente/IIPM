@@ -139,8 +139,8 @@ jQuery(document).ready(function(){
     	var snowball = document.getElementById("Pointer");
     	snowball.style.display = '';
     	snowball.style.position = 'absolute';
-    	snowball.style.left = x + 'px';
-    	snowball.style.top = y + 'px';
+    	snowball.style.left = x + 'in';
+    	snowball.style.top = y + 'in';
 
 		mutex = false;
 	}
@@ -180,7 +180,7 @@ jQuery(document).ready(function(){
 		}else{
 			button.prop('checked', true);
 		}
-		
+
 	});
 
 	$("#doneButton").click(function(){
