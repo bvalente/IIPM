@@ -58,7 +58,7 @@ jQuery(document).ready(function(){
 		mutex = true;
 
 		menu = OPT_MENU;
-		subMenus.children().not("#back").fadeOut("fast");
+		subMenus.children().not(".btn").fadeOut("fast");
 		$(".Map").delay("fast").fadeIn();
 
 		mutex = false;
@@ -217,4 +217,29 @@ jQuery(document).ready(function(){
 				break;
 				   }
 	});
+
+	$('#done').click(function(){
+		console.log('menu is ' + menu);
+		switch(menu){
+			case FRIEND_LIST:
+				if(option == SHARE){
+					loadOptionShare();
+				} else if (option == MEET) {
+					loadOptionMeet();
+				} else{
+					loadMainMenu();
+				}
+
+				break;
+			case OPT_MENU:
+				//TODO
+				loadOptionShare();
+				break;
+			default:
+				console.log('error');
+				loadMainMenu();
+				break;
+		}
+
+	})
 });
