@@ -173,18 +173,14 @@ jQuery(document).ready(function(){
 		point_it(event);
 	});
 
-	$(".friendsList").click(function(){//
-		if (option == SHARE){
-			loadOptionShare();
+	$(".friendsList div").click(function(){
+		var button = $('#'+this.id+' input');
+		if( button.is(':checked')){
+			button.prop('checked', false);
+		}else{
+			button.prop('checked', true);
 		}
-		else if (option == MEET) {
-			loadOptionMeet();
-		}
-		else{
-			console.log("error");
-			loadMainMenu();
-		}
-
+		
 	});
 
 	$("#doneButton").click(function(){
