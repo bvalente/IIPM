@@ -9,7 +9,13 @@ jQuery(document).ready(function(){
 	const FRIEND_LIST = 2;
 	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
+	const OPT_MENU = 5;
 
+
+	const SHARE = 10;
+	const MEET = 11;
+
+	var option = null;
 	var lock = true;
 	var menu = 0;
 	var mutex = false; //true if blocked
@@ -35,9 +41,34 @@ jQuery(document).ready(function(){
 		});
 	}
 
+	function loadOptionShare(){
+		if(mutex) return;
+		mutex = true;
+		menu = OPT_MENU;
+
+		subMenus.children().fadeOut("fast");
+		$('#shareMessage').delay("fast").fadeIn();
+		$("#doneButton").delay("fast").fadeIn();
+		mutex = false;
+
+	}
+
+	function loadOptionMeet(){
+		if(mutex) return;
+		mutex = true;
+
+		menu = OPT_MENU;
+		subMenus.children().not("#back").fadeOut("fast");
+		$(".Map").delay("fast").fadeIn();
+		
+		mutex = false;
+	}
+
+
 	function loadMainMenu(){
 		if(mutex) return;
 		mutex = true;
+		option = null;
 
 		menu = MAIN_MENU;
 		clock.children().fadeOut("fast");
@@ -68,6 +99,7 @@ jQuery(document).ready(function(){
 	}
 
 	function loadFriendsList(){ //after friends menu
+
 		if(mutex) return;
 		mutex = true;
 
@@ -105,7 +137,12 @@ jQuery(document).ready(function(){
 		unLockScreen();
 	});
 
-	$("#showLocation,#MeetingLocation").click(function(){
+	$("#shareLocation").click(function(){
+		option = SHARE;
+		loadFriendsList();
+	});
+	$("#MeetingLocation").click(function(){
+		option = MEET;
 		loadFriendsList();
 	});
 	$('#mainWidget').click(function(){
@@ -116,21 +153,42 @@ jQuery(document).ready(function(){
 		loadNotificationsMenu();
 	});
 
+	$(".friendsList").click(function(){
+		if (option == SHARE){
+			loadOptionShare();
+		}
+		else if (option == MEET) {
+			loadOptionMeet();
+		}
+		else{
+			console.log("error");
+			loadMainMenu();
+		}
+
+	});
+
+	$("#doneButton").click(function(){
+		console.log("done");
+		$("#doneButton").fadeOut();
+		$("#shareMessage").fadeOut();
+		loadMainMenu();
+	});
+
 	$('#back').click(function(){
-		/*
-		$('.friends').fadeOut();
-		$('.mainScreen').fadeIn();
-		*/
 		console.log('menu is ' + menu)
 		switch(menu){
 			case FRIEND_MENU://friend MENU, load friendList
 				loadMainMenu();
+
 				break;
 			case FRIEND_LIST://friendList, load main menu
 				loadFriendsMenu();
 				break;
 			case NOT_VIEW:
 				lockScreen();
+				break;
+			case OPT_MENU:
+				loadFriendsList();
 				break;
 			default: //error, load main menu
 				console.log('defaulted')
