@@ -307,8 +307,7 @@ input:checked ~ .box:after {
 }
 
 .Map {
-	position: relative;
-
+	/*position: relative;*/
 	width:inherit;
 	height: inherit;
 }
@@ -326,9 +325,14 @@ input:checked ~ .box:after {
 }
 
 #mapImage{
+	background-image:url('resources/map.png');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
 	height: 1.2in;
 	width: inherit;
 }
+
 
 @keyframes shake {
 	10%, 90% {

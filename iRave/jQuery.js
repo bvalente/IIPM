@@ -136,11 +136,11 @@ jQuery(document).ready(function(){
 
 		var x = event.clientX;
     	var y = event.clientY;
-    	var snowball = document.getElementById("Pointer");
-    	snowball.style.display = '';
-    	snowball.style.position = 'absolute';
-    	snowball.style.left = x + 'in';
-    	snowball.style.top = y + 'in';
+    	var point = document.getElementById("Pointer");
+    	point.style.display = '';
+    	point.style.position = 'absolute';
+    	point.style.left = x - 300 + 'px';
+    	point.style.top = y - 75 + 'px';
 
 		mutex = false;
 	}
