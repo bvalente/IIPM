@@ -97,6 +97,9 @@
 
 }
 
+.btn {
+	display: none;
+}
 .subMenus > div{
 	display: none;
 }
@@ -123,7 +126,6 @@
 	top:0.05in;
 
 	position: relative;
-	display: inline-block;
 	height: 0.3in;
 	width: 0.3in;
 	/*text-align: right;*/
@@ -132,9 +134,20 @@
 	padding: 0;
 	border: 0;
 }
+
+#done{
+	z-index:10;
+	margin-right:0.05in;
+	margin-top:0.02in;
+
+	height: 0.3in;
+	width: 0.7in;
+	float:right;
+}
+
 .friendsList{
 	height: 1.15in;
-	overflow: scroll;
+	overflow: auto;
 	background-color: #e6e6e6;
 
 	transition: 1s;
@@ -147,7 +160,7 @@
 	position: relative;
 	padding-top: 0.13in;
 	margin: 0;
-	right: 0.5in;
+	right: 0.4in;
 
 	opacity: 0.8;
  	align-self: center;
@@ -273,8 +286,8 @@ input:checked ~ .box:after {
 }
 
 .Map {
-	position: absolute;
-	top:0;
+	position: relative;
+
 	width:inherit;
 	height: inherit;
 }

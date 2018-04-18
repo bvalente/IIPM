@@ -105,8 +105,8 @@ jQuery(document).ready(function(){
 
 		menu = FRIEND_LIST;
 
-		subMenus.children().not("#back").fadeOut("fast");
-		$('.friendsList').delay("fast").fadeIn();
+		subMenus.children().not(".btn").fadeOut("fast");
+		$('.friendsList, .btn').delay("fast").fadeIn();
 
 		mutex = false;
 	}
