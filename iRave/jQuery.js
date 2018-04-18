@@ -17,7 +17,6 @@ jQuery(document).ready(function(){
 	function lockScreen(){
 		console.log('Locked')
 		if(!lock){
-			console.log('in if')
 			clock.children().fadeOut();
 			$('.lockScreen').fadeIn("fast");
 			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
@@ -51,16 +50,17 @@ jQuery(document).ready(function(){
 
 		if(mutex) return;
 		mutex = true;
-		if (menu == FRIEND_LIST){
+		if (menu == FRIEND_LIST){ //In case of FriendsList and #BACK is pressed
 			subMenus.children().not("#back").fadeOut("fast");
 			$('.friendsMenu').delay("fast").fadeIn();
 		}
-		else {
+		else if (menu == MAIN_MENU){ //MainWidget to menu of friends
 			console.log("cer");
-			$mainScreen.delay("fast").fadeOut();
-			
+			$mainScreen.fadeOut("fast");
+			$('.subMenus, .friendsMenu').delay("fast").fadeIn();
 			$('#back').delay("fast").fadeIn();
-			$('.friendsMenu').delay("fast").fadeIn();
+			//$('.friendsMenu').delay("fast").fadeIn();
+
 		}
 
 		menu = FRIEND_MENU;
