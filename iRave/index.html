@@ -28,7 +28,7 @@
 				<div class ="subMenus">
 
 					<img class="btn" id="back" src="resources/iconmonstr-undo-1-240.png">
-					<button class="btn" id="done" type="button">Done</button>
+					<button class="btn" id="next" type="button">Next</button>
 
 					<!-- Friends menu -->
 					<div class="friendsList">
@@ -73,23 +73,28 @@
 					</div>
 
 
-					<div id="Message">
-						<div class="shareMessage">
-							<p> Location shared! </p>
-						</div>
 
-						<div class="meetMessage">
-							<p> Meeting point selected! </p>
-						</div>
-
-						<div class="askMessage">
-							<p> Friends Localization asked! </p>
-						</div>
-
-						<button id="doneButton" type="button">
+					<div class="message" id="shareMessage">
+						<p> Location shared! </p>
+						<button class="doneButton" type="button">
 							Done <!--Done volta para main menu-->
 						</button>
 					</div>
+
+					<div class="message" id="meetMessage">
+						<p> Meeting point selected! </p>
+						<button class="doneButton" type="button">
+							Done <!--Done volta para main menu-->
+						</button>
+					</div>
+
+					<div class="message" id="askMessage">
+						<p> Friends Localization asked! </p>
+						<button class="doneButton" type="button">
+							Done <!--Done volta para main menu-->
+						</button>
+					</div>
+
 
 					<!-- Show Location Menu -->
 					<div class = "Map">

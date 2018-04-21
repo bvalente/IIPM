@@ -10,7 +10,6 @@ jQuery(document).ready(function(){
 	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
 	const OPT_MENU = 5;
-	const ASK_MENU = 6;
 
 	const ASK = 9;
 	const SHARE = 10;
@@ -91,9 +90,8 @@ jQuery(document).ready(function(){
 		menu = OPT_MENU;
 
 		subMenus.children().fadeOut("fast");
-		$('#Message').delay("fast").fadeIn();
-		$('.shareMessage').delay("fast").fadeIn();
-		$("#doneButton").delay("fast").fadeIn();
+		$('#shareMessage').delay("fast").fadeIn();
+		$(".doneButton").delay("fast").fadeIn();
 		mutex = false;
 
 	}
@@ -112,11 +110,12 @@ jQuery(document).ready(function(){
 	function loadOptionAsk(){
 		if(mutex) return;
 		mutex = true;
+		console.log("here");
+		menu = OPT_MENU;
 
-		menu = ASK_MENU;
-		$('#shareMessage').delay("fast").fadeIn();
-		$('.askMessage').delay("fast").fadeIn();
-		$("#doneButton").delay("fast").fadeIn();
+		subMenus.children().fadeOut("fast");
+		$('#askMessage').delay("fast").fadeIn();
+		$(".doneButton").delay("fast").fadeIn();
 
 		mutex = false;
 	}
@@ -198,14 +197,11 @@ jQuery(document).ready(function(){
 
 	});
 
-	$(".btn").click(function(){
+	$(".doneButton").click(function(){
 		console.log("done");
-		$(".btn").fadeOut();
-		$("#Message").fadeOut();
-		//$(".").fadeOut();
-
-
-
+		$(".doneButton").fadeOut();
+		$(".message").fadeOut();
+		//$(".").fadeOut()
 		loadMainMenu();
 	});
 
@@ -238,17 +234,19 @@ jQuery(document).ready(function(){
 				   }
 	});
 
-	$('#done').click(function(){
-		console.log('menu is ' + menu);
-		switch(menu){
+	$('#next').click(function(){
+		console.log("pressed");
+			switch(menu){
 			case FRIEND_LIST:
+				console.log("fl");
 				if(option == SHARE){
 					loadOptionShare();
 				} else if (option == MEET) {
 					loadOptionMeet();
 				} else if (option == ASK) {
+					console.log("fl");
 					loadOptionAsk();
-				} else{
+				} else {
 					loadMainMenu();
 				}
 
@@ -263,5 +261,5 @@ jQuery(document).ready(function(){
 				break;
 		}
 
-	})
+	});
 });

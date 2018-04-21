@@ -109,7 +109,7 @@
 	transition-duration: 0.4s;
 
 }
-#done:hover {
+#next:hover {
     background-color: #4CAF50; /* Green */
     color: white;
 }
@@ -118,7 +118,7 @@
 }
 
 
-#Message{
+#shareMessage,#meetMessage,#askMessage{
 	width:0.9in;
 	height: 0.9in;
 	background-color: purple;
@@ -131,17 +131,8 @@
 	opacity: 0.85;
 	transition: 1s;
 
-} #Message:hover{
+} #shareMessage:hover,#meetMessage:hover,#askMessage:hover{
 	opacity: 1.0;
-}
-.shareMessage{
-	display: none;
-}
-.meetMessage{
-	display: none;
-}
-.askMessage{
-	display: none;
 }
 
 .subMenus #back{
@@ -159,7 +150,7 @@
 	border: 0;
 }
 
-#done{
+#next{
 	z-index:10;
 	margin-right:0.05in;
 	margin-top:0.02in;
