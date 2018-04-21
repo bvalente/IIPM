@@ -118,7 +118,7 @@
 }
 
 
-#shareMessage{
+#Message{
 	width:0.9in;
 	height: 0.9in;
 	background-color: purple;
@@ -131,8 +131,17 @@
 	opacity: 0.85;
 	transition: 1s;
 
-} #shareMessage:hover{
+} #Message:hover{
 	opacity: 1.0;
+}
+.shareMessage{
+	display: none;
+}
+.meetMessage{
+	display: none;
+}
+.askMessage{
+	display: none;
 }
 
 .subMenus #back{
@@ -220,9 +229,9 @@
 }
 
 
-#shareLocation, #MeetingLocation{
+#shareLocation, #MeetingLocation, #askLocation{
 	position: relative;
-	height: 0.45in;
+	height: 0.30in;
 	width: 80%;
 	border-radius: 0.07in;
 	left: 10%;
@@ -235,10 +244,11 @@
 	font-size: 0.13in;
 	transition: 0.3s;
 	opacity: 0.8;
-	line-height: 0.45in;
+	line-height: 0.3in;
 
 }
-#MeetingLocation:hover,#shareLocation:hover{
+
+#MeetingLocation:hover,#shareLocation:hover,#askLocation:hover{
 	opacity: 1.0;
 	background-color: green;
 	font-size: 0.15in;

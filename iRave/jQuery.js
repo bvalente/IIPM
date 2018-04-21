@@ -10,8 +10,9 @@ jQuery(document).ready(function(){
 	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
 	const OPT_MENU = 5;
+	const ASK_MENU = 6;
 
-
+	const ASK = 9;
 	const SHARE = 10;
 	const MEET = 11;
 
@@ -40,31 +41,6 @@ jQuery(document).ready(function(){
 			$('.mainScreen').delay("fast").fadeIn();
 		});
 	}
-
-	function loadOptionShare(){
-		if(mutex) return;
-		mutex = true;
-		menu = OPT_MENU;
-
-		subMenus.children().fadeOut("fast");
-		$('#shareMessage').delay("fast").fadeIn();
-		$("#doneButton").delay("fast").fadeIn();
-		mutex = false;
-
-	}
-
-	function loadOptionMeet(){
-		if(mutex) return;
-		mutex = true;
-
-		menu = OPT_MENU;
-		subMenus.children().not(".btn").fadeOut("fast");
-		$(".Map").delay("fast").fadeIn();
-
-		mutex = false;
-	}
-
-
 	function loadMainMenu(){
 		if(mutex) return;
 		mutex = true;
@@ -86,12 +62,10 @@ jQuery(document).ready(function(){
 			$('.friendsMenu').delay("fast").fadeIn();
 		}
 		else if (menu == MAIN_MENU){ //MainWidget to menu of friends
-			console.log("cer");
 			$mainScreen.fadeOut("fast");
 			$('.subMenus, .friendsMenu').delay("fast").fadeIn();
 			$('#back').delay("fast").fadeIn();
 			//$('.friendsMenu').delay("fast").fadeIn();
-
 		}
 
 		menu = FRIEND_MENU;
@@ -110,6 +84,43 @@ jQuery(document).ready(function(){
 
 		mutex = false;
 	}
+
+	function loadOptionShare(){
+		if(mutex) return;
+		mutex = true;
+		menu = OPT_MENU;
+
+		subMenus.children().fadeOut("fast");
+		$('#Message').delay("fast").fadeIn();
+		$('.shareMessage').delay("fast").fadeIn();
+		$("#doneButton").delay("fast").fadeIn();
+		mutex = false;
+
+	}
+
+	function loadOptionMeet(){
+		if(mutex) return;
+		mutex = true;
+
+		menu = OPT_MENU;
+		subMenus.children().not(".btn").fadeOut("fast");
+		$(".Map").delay("fast").fadeIn();
+
+		mutex = false;
+	}
+
+	function loadOptionAsk(){
+		if(mutex) return;
+		mutex = true;
+
+		menu = ASK_MENU;
+		$('#shareMessage').delay("fast").fadeIn();
+		$('.askMessage').delay("fast").fadeIn();
+		$("#doneButton").delay("fast").fadeIn();
+
+		mutex = false;
+	}
+
 
 	function loadNotificationsMenu(){
 		lock = false;
@@ -161,6 +172,10 @@ jQuery(document).ready(function(){
 		option = MEET;
 		loadFriendsList();
 	});
+	$("#askLocation").click(function(){
+		option = ASK;
+		loadFriendsList();
+	});
 	$('#mainWidget').click(function(){
 		loadFriendsMenu();
 	});
@@ -183,10 +198,14 @@ jQuery(document).ready(function(){
 
 	});
 
-	$("#doneButton").click(function(){
+	$(".btn").click(function(){
 		console.log("done");
-		$("#doneButton").fadeOut();
-		$("#shareMessage").fadeOut();
+		$(".btn").fadeOut();
+		$("#Message").fadeOut();
+		//$(".").fadeOut();
+
+
+
 		loadMainMenu();
 	});
 
@@ -196,17 +215,22 @@ jQuery(document).ready(function(){
 		switch(menu){
 			case FRIEND_MENU://friend MENU, load friendList
 				loadMainMenu();
-
 				break;
+
 			case FRIEND_LIST://friendList, load main menu
 				loadFriendsMenu();
 				break;
+
 			case NOT_VIEW:
 				lockScreen();
 				break;
+
 			case OPT_MENU:
 				loadFriendsList();
 				break;
+			case ASK_MENU:
+				loadFriendsMenu();
+
 			default: //error, load main menu
 				console.log('defaulted')
 				loadMainMenu();
@@ -222,6 +246,8 @@ jQuery(document).ready(function(){
 					loadOptionShare();
 				} else if (option == MEET) {
 					loadOptionMeet();
+				} else if (option == ASK) {
+					loadOptionAsk();
 				} else{
 					loadMainMenu();
 				}

@@ -1,0 +1,5 @@
+1 - Nova opção em Friends Menu - Ask Location
+2 - Mudar mensagem "Location Shared" depois de Meeting Location
+3 - melhorar funcionalidades (Apresentar distância ao MeetPoint de todos os amigos/Mostrar posição dos amigos no mapa etc)
+4 - Fazer botão done aparecer só depois de um amigo estar "checked"
+5 - Mudar Done Para Next, na FriendsList e Map (funcionalidade MeetingLocation)
