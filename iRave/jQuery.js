@@ -14,6 +14,7 @@ jQuery(document).ready(function(){
 	const ASK = 9;
 	const SHARE = 10;
 	const MEET = 11;
+	const MAP = 12;
 
 	var option = null;
 	var lock = true;
@@ -87,7 +88,6 @@ jQuery(document).ready(function(){
 	function loadOptionShare(){
 		if(mutex) return;
 		mutex = true;
-		menu = OPT_MENU;
 
 		subMenus.children().fadeOut("fast");
 		$('#shareMessage').delay("fast").fadeIn();
@@ -100,18 +100,27 @@ jQuery(document).ready(function(){
 		if(mutex) return;
 		mutex = true;
 
-		menu = OPT_MENU;
 		subMenus.children().not(".btn").fadeOut("fast");
 		$(".Map").delay("fast").fadeIn();
 
+		option = MAP;
+
 		mutex = false;
 	}
+	function loadOptionMeetDone(){
+		if(mutex) return;
+		mutex = true;
+		console.log("ehy");
+		subMenus.children().fadeOut("fast");
+		$('#meetMessage').delay("fast").fadeIn();
+		$(".doneButton").delay("fast").fadeIn();
 
+		mutex = false;
+	}
 	function loadOptionAsk(){
 		if(mutex) return;
 		mutex = true;
 		console.log("here");
-		menu = OPT_MENU;
 
 		subMenus.children().fadeOut("fast");
 		$('#askMessage').delay("fast").fadeIn();
@@ -119,8 +128,6 @@ jQuery(document).ready(function(){
 
 		mutex = false;
 	}
-
-
 	function loadNotificationsMenu(){
 		lock = false;
 		if (mutex) return;
@@ -235,31 +242,39 @@ jQuery(document).ready(function(){
 	});
 
 	$('#next').click(function(){
-		console.log("pressed");
 			switch(menu){
 			case FRIEND_LIST:
-				console.log("fl");
 				if(option == SHARE){
 					loadOptionShare();
 				} else if (option == MEET) {
 					loadOptionMeet();
+
 				} else if (option == ASK) {
-					console.log("fl");
 					loadOptionAsk();
+				} else if (option == MAP) {
+					loadOptionMeetDone();
 				} else {
 					loadMainMenu();
 				}
+				console.log(option);
 
 				break;
 			case OPT_MENU:
-				//TODO
-				loadOptionShare();
-				break;
+
+
 			default:
-				console.log('error');
+				console.log('Error');
 				loadMainMenu();
 				break;
 		}
 
+	});
+
+	$('.box').change(function(){
+		if($(this).is(":checked")){
+			$('#next').show();
+		} else if($(this).is(":not(:checked)")){
+			$('#next').hide();
+		}
 	});
 });
