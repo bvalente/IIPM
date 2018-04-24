@@ -156,8 +156,17 @@ jQuery(document).ready(function(){
     	var point = document.getElementById("Pointer");
     	point.style.display = '';
     	point.style.position = 'absolute';
+		/*
     	point.style.left = x - 300 + 'px';
     	point.style.top = y - 75 + 'px';
+		*/
+		var left1 = parseInt($('body').css("margin-left"));
+		var left2 = parseInt($('#exterior').css("margin-left"));
+		var top1 = parseInt($('#top').css('height'));
+		var top2 = parseInt($('#back').css('height'));
+		console.log(left1+':'+left2+':'+top1+':'+top2);
+		point.style.left = x - (left1 + left2) + 'px';
+		point.style.top = y - (top1 + top2) + 'px';
 
 		mutex = false;
 	}
@@ -190,7 +199,7 @@ jQuery(document).ready(function(){
 		loadNotificationsMenu();
 	});
 
-	$('#mapImage').click(function(){
+	$('#mapImage').click(function(event){
 		point_it(event);
 	});
 
