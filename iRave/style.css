@@ -276,6 +276,15 @@
 .notificationsMenu{
 	display: none;
 }
+.check{
+	display: none;
+	position: relative;
+	overflow: scroll;
+	left:0.9in;
+	margin-top: 0.1in;
+	height: 0.2in;
+	height: 0.2in;
+}
 .box{
 	position: relative;
 	overflow: scroll;

@@ -195,12 +195,15 @@ jQuery(document).ready(function(){
 	});
 
 	$(".friendsList div").click(function(){
-		var button = $('#'+this.id+' input');
+		var button = $('#'+this.id+' .check');
+		/*
 		if( button.is(':checked')){
 			button.prop('checked', false);
 		}else{
 			button.prop('checked', true);
 		}
+		*/
+		button.toggle();
 
 	});
 
