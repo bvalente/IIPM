@@ -20,6 +20,7 @@ jQuery(document).ready(function(){
 	var lock = true;
 	var menu = 0;
 	var mutex = false; //true if blocked
+	var friendsList = [];
 
 	function lockScreen(){
 		console.log('Locked')
@@ -205,13 +206,17 @@ jQuery(document).ready(function(){
 
 	$(".friendsList div").click(function(){
 		var button = $('#'+this.id+' .check');
-		/*
-		if( button.is(':checked')){
-			button.prop('checked', false);
-		}else{
-			button.prop('checked', true);
+		var name = $('#'+this.id + ' .textf').text();
+		//add friend clicked to array
+		if (button.css("display") == "none"){
+			friendsList.push(name);
+		} else {
+			var index = friendsList.indexOf(name);
+			if (index > -1){
+				friendsList.splice(index, 1);
+			}
 		}
-		*/
+		console.log(friendsList);
 		button.toggle();
 
 	});
@@ -254,6 +259,9 @@ jQuery(document).ready(function(){
 	});
 
 	$('#next').click(function(){
+
+			if(friendsList.length == 0){return}//if no friend is checked
+
 			switch(menu){
 			case FRIEND_LIST:
 				if(option == SHARE){
