@@ -172,6 +172,17 @@ jQuery(document).ready(function(){
 		mutex = false;
 	}
 
+	function resetSelects(){
+		if(mutex) return;
+		mutex = true;
+
+		menu = FRIEND_LIST;
+
+		document.getElementById('#'+this.id+' .check').style.display = "none";
+
+		mutex = false;
+	}
+
 	$lockButton.click(function(){
 		lockScreen();
 	});
@@ -207,9 +218,10 @@ jQuery(document).ready(function(){
 	$(".friendsList div").click(function(){
 		var button = $('#'+this.id+' .check');
 		var name = $('#'+this.id + ' .textf').text();
+		var ID = this.id;
 		//add friend clicked to array
 		if (button.css("display") == "none"){
-			friendsList.push(name);
+			friendsList.push(ID);
 		} else {
 			var index = friendsList.indexOf(name);
 			if (index > -1){
@@ -264,6 +276,11 @@ jQuery(document).ready(function(){
 
 			switch(menu){
 			case FRIEND_LIST:
+				var i;
+				for (i = 0; i < friendsList.length; i++) { 
+					var button = $('#'+friendsList[i]+' .check');
+					button.toggle();
+					delete friendsList[i];}
 				if(option == SHARE){
 					loadOptionShare();
 				} else if (option == MEET) {
