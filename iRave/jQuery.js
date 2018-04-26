@@ -115,6 +115,7 @@ jQuery(document).ready(function(){
 		subMenus.children().fadeOut("fast");
 		$('#meetMessage').delay("fast").fadeIn();
 		$(".doneButton").delay("fast").fadeIn();
+		document.getElementById("Pointer").style.display = "none";
 
 		mutex = false;
 	}
@@ -168,17 +169,6 @@ jQuery(document).ready(function(){
 		console.log(left1+':'+left2+':'+top1+':'+top2);
 		point.style.left = x - (left1 + left2) + 'px';
 		point.style.top = y - (top1 + top2) + 'px';
-
-		mutex = false;
-	}
-
-	function resetSelects(){
-		if(mutex) return;
-		mutex = true;
-
-		menu = FRIEND_LIST;
-
-		document.getElementById('#'+this.id+' .check').style.display = "none";
 
 		mutex = false;
 	}
