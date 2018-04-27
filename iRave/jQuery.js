@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
 		if(!lock){
 			clock.children().fadeOut();
 			$('.lockScreen').fadeIn("fast");
-			$('#time').animate({top:'0.4in', opacity:'1'}, "slow");
+			$('#time').animate({top:'0.4in', opacity:'1'}, 0.7);
 
 		}
 		lock = true;
@@ -37,7 +37,7 @@ jQuery(document).ready(function(){
 	function unLockScreen(){
 		lock = false;
 		menu = MAIN_MENU;
-		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
+		$('#time').animate({top:'0in', opacity:'0.1'}, 0.7, function(){
 			clock.children().fadeOut("fast");
 			$('.mainScreen').delay("fast").fadeIn();
 		});
@@ -80,8 +80,10 @@ jQuery(document).ready(function(){
 
 		menu = FRIEND_LIST;
 
+		$('.check').css("display", "none");
+
 		subMenus.children().not(".btn").fadeOut("fast");
-		$('.friendsList, .btn').delay("fast").fadeIn();
+		$('.friendsList').delay("fast").fadeIn();
 
 		mutex = false;
 	}
@@ -212,11 +214,19 @@ jQuery(document).ready(function(){
 		//add friend clicked to array
 		if (button.css("display") == "none"){
 			friendsList.push(ID);
+
 		} else {
-			var index = friendsList.indexOf(name);
+			var index = friendsList.indexOf(ID);
 			if (index > -1){
 				friendsList.splice(index, 1);
 			}
+		}
+
+		if (friendsList.length > 0){
+			$('.btn').delay("fast").fadeIn();
+			$('#next').fadeTo(0.4,1);
+		} else if (friendsList.length == 0){
+			$('#next').fadeTo(0.4,0.3);
 		}
 		console.log(friendsList);
 		button.toggle();
@@ -267,7 +277,7 @@ jQuery(document).ready(function(){
 			switch(menu){
 			case FRIEND_LIST:
 				var i;
-				for (i = 0; i < friendsList.length; i++) { 
+				for (i = 0; i < friendsList.length; i++) {
 					var button = $('#'+friendsList[i]+' .check');
 					button.toggle();
 					delete friendsList[i];}

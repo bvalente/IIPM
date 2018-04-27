@@ -121,14 +121,15 @@
 #shareMessage,#meetMessage,#askMessage{
 	width:0.9in;
 	height: 0.9in;
-	background-color: purple;
+	background-color: #4CAF50;
 	border-radius: 0.15in;
 	text-align: center;
+	font-family: Verdana;
+
 	position: absolute;
 	top:0.3in;
 	left: 0.3in;
 
-	opacity: 0.85;
 	transition: 1s;
 
 } #shareMessage:hover,#meetMessage:hover,#askMessage:hover{
