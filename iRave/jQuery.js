@@ -16,12 +16,16 @@ jQuery(document).ready(function(){
 	const MEET = 11;
 	const MAP = 12;
 
+	//mainWidget
+	const BIG = 20;
+	const SMALL = 21;
+
 	var option = null;
 	var lock = true;
 	var menu = 0;
 	var mutex = false; //true if blocked
 	var friendsList = [];
-
+	var mw = BIG;
 	function lockScreen(){
 		console.log('Locked')
 		if(!lock){
@@ -41,6 +45,7 @@ jQuery(document).ready(function(){
 			clock.children().fadeOut("fast");
 			$('.mainScreen').delay("fast").fadeIn();
 		});
+
 	}
 	function loadMainMenu(){
 		if(mutex) return;
@@ -50,9 +55,57 @@ jQuery(document).ready(function(){
 		menu = MAIN_MENU;
 		clock.children().fadeOut("fast");
 		$('.mainScreen').delay("fast").fadeIn();
-
+		console.log('load main menu');
 		mutex = false;
 	}
+	function animateWidget(){
+		console.log('click');
+		console.log(mw);
+		if(mw == BIG){
+			$('#mainWidget').animate({
+				width:'0.4in',
+				height: '0.4in',
+				position: 'absolute',
+				top: '0.1in',
+				left: '0.55in',
+			});
+			$('#notificationsWidget').animate({
+				width:'0.8in',
+				height: '0.8in',
+				position: 'absolute',
+				bottom:'0.1in',
+				left: '0.35in',
+			});
+			mw = SMALL;
+			console.log('now mw is ' + mw);
+			return;
+		}
+		if(mw == SMALL){
+			console.log('big');
+			$('#notificationsWidget').animate({
+				width:'0.4in',
+				height: '0.4in',
+				position: 'absolute',
+				bottom: '0.1in',
+				left: '0.55in',
+			});
+			$('#mainWidget').animate({
+				width:'0.8in',
+				height: '0.8in',
+				position: 'absolute',
+				top:'0.1in',
+				left: '0.35in',
+			});
+			mw = BIG;
+			return;
+
+		}
+	}
+
+	$('#notificationsWidget').click(function(){
+		animateWidget();
+	})
+
 
 	function loadFriendsMenu(){ //after unlock screen
 
@@ -72,7 +125,6 @@ jQuery(document).ready(function(){
 		menu = FRIEND_MENU;
 		mutex = false;
 	}
-
 	function loadFriendsList(){ //after friends menu
 
 		if(mutex) return;
@@ -87,7 +139,6 @@ jQuery(document).ready(function(){
 
 		mutex = false;
 	}
-
 	function loadOptionShare(){
 		if(mutex) return;
 		mutex = true;
@@ -98,7 +149,6 @@ jQuery(document).ready(function(){
 		mutex = false;
 
 	}
-
 	function loadOptionMeet(){
 		if(mutex) return;
 		mutex = true;
@@ -196,6 +246,12 @@ jQuery(document).ready(function(){
 		loadFriendsList();
 	});
 	$('#mainWidget').click(function(){
+		console.log(mw + ': in function');
+		if (mw == SMALL){
+			animateWidget();
+			return;
+			console.log('did u return');
+		}
 		loadFriendsMenu();
 	});
 
