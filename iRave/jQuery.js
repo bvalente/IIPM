@@ -35,9 +35,9 @@ jQuery(document).ready(function(){
 	function lockScreen(){
 		console.log('Locked')
 		if(!lock){
-			clock.children().fadeOut();
-			$('.lockScreen').fadeIn("fast");
-			$('#time').animate({top:'0.4in', opacity:'1'}, 0.7);
+			clock.children().fadeOut("fast");
+			$('.lockScreen').delay("fast").fadeIn("fast");
+			$('#time').delay("fast").animate({top:'0.4in', opacity:'1'}, 0.7);
 
 		}
 		lock = true;
@@ -47,11 +47,9 @@ jQuery(document).ready(function(){
 	function unLockScreen(){
 		lock = false;
 		menu = MAIN_MENU;
-		$('#time').animate({top:'0in', opacity:'0.1'}, 0.7, function(){
-			clock.children().fadeOut("fast");
-			$('.mainScreen').delay("fast").fadeIn();
-		});
-
+		$('#time').animate({top:'0in', opacity:'0.1'}, "fast");
+		clock.children().fadeOut("slow");
+		$('.mainScreen').delay("slow").fadeIn();
 	}
 	function loadMainMenu(){
 		if(mutex) return;
@@ -59,6 +57,7 @@ jQuery(document).ready(function(){
 		option = null;
 
 		menu = MAIN_MENU;
+		$('.subMenus').children().fadeOut("fast");//TODO teste
 		clock.children().fadeOut("fast");
 		$('.mainScreen').delay("fast").fadeIn();
 		console.log('load main menu');
@@ -248,6 +247,7 @@ jQuery(document).ready(function(){
 		loadFriendsMenu();
 	});
 	$('#notificationsTab').click(function(){
+		lock =false;
 		loadArtistMenu();
 	});
 
@@ -292,21 +292,23 @@ jQuery(document).ready(function(){
 
 
 	$('#back').click(function(){
+		/* ha varios casos que executam a mesma funçao
+		nao e necessario fazermos um switch case tao comprido
+		atençao à falta de breaks propositada
+		*/
 		console.log(menu);
 		switch(menu){
 
+
 			case FRIEND_MENU://friend MENU, load friendList
+			case ARTIST:
+			case NOT_VIEW:
+				//if FRIEND_MENU OR ARTIST OR NOT_VIEW
 				loadMainMenu();
 				break;
 
 			case FRIEND_LIST://friendList, load main menu
 				loadFriendsMenu();
-				break;
-
-			case NOT_VIEW:
-				loadMainMenu();
-				//lockScreen();
-				break;
 
 			case OPT_MENU:
 				loadFriendsList();
@@ -314,10 +316,7 @@ jQuery(document).ready(function(){
 			case ASK:
 				loadFriendsMenu();
 				break;
-			case ARTIST:
-				//hide notification and show artistMenu
-				loadMainMenu();
-				break;
+
 			case DAY_MENU:
 				console.log('SHO');
 				loadArtistMenu();
@@ -406,9 +405,22 @@ jQuery(document).ready(function(){
 		if(mutex) return;
 		mutex = true;
 
+		menu = DAY_LIST;
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.dayList').delay("fast").fadeIn();
 		mutex = false;
 	};
+
+	$('#findByStage').click(function(){
+		menu = STAGE_MENU;
+		loadStageList();
+
+	})
+
+	function loadStageList(){
+		menu = STAGE_LIST;
+		subMenus.children().not(".btn").fadeOut("fast");
+		$('.stageList').delay("fast").fadeIn();
+	}
 
 });
