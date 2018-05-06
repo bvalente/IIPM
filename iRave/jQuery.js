@@ -15,6 +15,7 @@ jQuery(document).ready(function(){
 	const DAY_LIST = 8;
 	const STAGE_MENU = 20;
 	const STAGE_LIST = 21;
+	const ARTIST_LIST = 22;
 
 
 	const ASK = 9;
@@ -32,6 +33,8 @@ jQuery(document).ready(function(){
 	var mutex = false; //true if blocked
 	var friendsList = [];
 	var mw = BIG;
+	var artistList = [];
+
 	function lockScreen(){
 		console.log('Locked')
 		if(!lock){
@@ -308,15 +311,15 @@ jQuery(document).ready(function(){
 				break;
 
 			case FRIEND_LIST://friendList, load main menu
-				loadFriendsMenu();
-
-			case OPT_MENU:
-				loadFriendsList();
-				break;
 			case ASK:
 				loadFriendsMenu();
 				break;
 
+			case OPT_MENU:
+				loadFriendsList();
+				break;
+
+			case STAGE_MENU:
 			case DAY_MENU:
 				console.log('SHO');
 				loadArtistMenu();
@@ -423,4 +426,47 @@ jQuery(document).ready(function(){
 		$('.stageList').delay("fast").fadeIn();
 	}
 
+	$('#day1').click(function(){
+		createArtistList( true, 1);
+	})
+
+	/* explanation
+	primeiro vamos à list de artistas e guradamos todos os que queremos numa lista
+	decidimos se queremos ou nao se forem do dia/palco que é passado como argumento
+	finalmente adicionamos todos os artistas a uma view
+	*/
+	function createArtistList( b, n){
+		//b-> true means day;false means stage
+		//n-> number of the day/stage
+		var parent = $(".artistList");
+		list = [];
+		menu = ARTIST_LIST;
+		subMenus.children().not(".btn").fadeOut("fast");
+		$('.artistList').delay("fast").fadeIn();
+		//SHENANIGANS
+		//TODO cleanup artistList before creating divs
+		if(b){ //day
+			$.each(artistList, function(index, value){//foreach all artists
+				if(value._day == n){
+					list.push(value);
+				}
+			})
+		} else{ //stage
+			$.each(artistList, function(index, value){//foreach all artists
+				if(value._stage == n){
+					list.push(value);
+				}
+			})
+		}
+		$.each(list, function(index, value){
+			parent.append("<div class=artistView> <img src="+value._image+"/> "+value._name+" </div>");
+		})
+	}
+
+	function createArtist(name, image, time, day, stage){
+		var artist = {_name:name, _image:image, _time:time, _day:day, _stage:stage};
+		artistList.push(artist);
+	}
+
+	createArtist("Arctic Monkeys", "resources/am.jpeg","22:00", 1, 1);
 });
