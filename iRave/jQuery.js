@@ -10,7 +10,12 @@ jQuery(document).ready(function(){
 	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
 	const OPT_MENU = 5;
-	const NOTIFICATION = 6;
+	const ARTIST = 6;
+	const DAY_MENU = 7;
+	const DAY_LIST = 8;
+	const STAGE_MENU = 20;
+	const STAGE_LIST = 21;
+
 
 	const ASK = 9;
 	const SHARE = 10;
@@ -69,54 +74,49 @@ jQuery(document).ready(function(){
 				position: 'absolute',
 				top: '0.1in',
 				left: '0.55in',
-			});
-			$('#notificationsWidget').animate({
+			},0.3);
+			$('#artistWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
 				position: 'absolute',
 				bottom:'0.1in',
 				left: '0.35in',
-			});
+			},0.3);
 			mw = SMALL;
-			console.log('now mw is ' + mw);
 			return;
 		}
 		if(mw == SMALL){
 			console.log('big');
-			$('#notificationsWidget').animate({
+			$('#artistWidget').animate({
 				width:'0.4in',
 				height: '0.4in',
 				position: 'absolute',
 				bottom: '0.1in',
 				left: '0.55in',
-			});
+			},0.3);
 			$('#mainWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
 				position: 'absolute',
 				top:'0.1in',
 				left: '0.35in',
-			});
+			},0.3);
 			mw = BIG;
 			return;
 
 		}
 	}
 
-	$('#notificationsWidget').click(function(){
+	$('#artistWidget').click(function(){
+		menu = ARTIST;
 		if(mw==SMALL){
-			loadNotificationsMenu();
-
+			loadArtistMenu();
 		} else{
 			animateWidget();
 		}
 
-	})
-	$('#weather').click(function(){
-		option = NOTIFICATION;
-		$(".notificationsMenu").fadeOut("fast");
-		$(".weatherNotification").delay("fast").fadeIn();
-	})
+	});
+
 
 
 	function loadFriendsMenu(){ //after unlock screen
@@ -194,26 +194,6 @@ jQuery(document).ready(function(){
 
 		mutex = false;
 	}
-	function loadNotificationsMenu(){
-		lock = false;
-		if (mutex) return;
-		mutex = true;
-		menu = NOT_VIEW;
-
-		console.log(menu);
-		$('.Notification').hide();
-		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
-			clock.children().fadeOut("slow");
-			//add a delay
-			$('.subMenus').delay("slow").fadeIn();
-			$('.friendsMenu').hide();
-			$('.notificationsMenu').delay("slow").fadeIn();
-			$('#back').delay("slow").fadeIn();
-		});
-
-		mutex = false;
-	}
-
 
 	function point_it(event){ //after friends menu
 
@@ -261,22 +241,20 @@ jQuery(document).ready(function(){
 		loadFriendsList();
 	});
 	$('#mainWidget').click(function(){
-		console.log(mw + ': in function');
 		if (mw == SMALL){
 			animateWidget();
 			return;
-			console.log('did u return');
 		}
 		loadFriendsMenu();
 	});
-
 	$('#notificationsTab').click(function(){
-		loadNotificationsMenu();
+		loadArtistMenu();
 	});
 
 	$('#mapImage').click(function(event){
 		point_it(event);
 	});
+
 
 	$(".friendsList div").click(function(){
 		var button = $('#'+this.id+' .check');
@@ -314,8 +292,9 @@ jQuery(document).ready(function(){
 
 
 	$('#back').click(function(){
-		console.log('menu is ' + menu)
+		console.log(menu);
 		switch(menu){
+
 			case FRIEND_MENU://friend MENU, load friendList
 				loadMainMenu();
 				break;
@@ -332,15 +311,18 @@ jQuery(document).ready(function(){
 			case OPT_MENU:
 				loadFriendsList();
 				break;
-			case ASK_MENU:
+			case ASK:
 				loadFriendsMenu();
 				break;
-			case NOTIFICATION:
-				//hide notification and show notificationsMenu
-				loadNotificationsMenu();
+			case ARTIST:
+				//hide notification and show artistMenu
+				loadMainMenu();
 				break;
-
-
+			case DAY_MENU:
+				console.log('SHO');
+				loadArtistMenu();
+	//		case DAY_LIST:
+	//			load
 			default: //error, load main menu
 				console.log('defaulted')
 				loadMainMenu();
@@ -392,4 +374,41 @@ jQuery(document).ready(function(){
 			$('#next').hide();
 		}
 	});
+	/*2A FUNCIONALIDADE*/
+
+
+	function loadArtistMenu(){
+		if (mutex) return;
+		mutex = true;
+
+		console.log(menu + 'fun');
+		$('.Notification').hide();
+		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
+			clock.children().fadeOut("fast");
+			$('.dayList').hide();
+			$('.friendsMenu').hide();
+
+			$('.subMenus').delay("fast").fadeIn();
+			$('.artistMenu').delay("fast").fadeIn();
+			$('#back').delay("fast").fadeIn();
+		})
+
+		mutex = false;
+	}
+
+	$('#findByDay').click(function(){
+		menu = DAY_MENU;
+		console.log('clciked');
+		loadDayList();
+	});
+
+	function loadDayList(){
+		if(mutex) return;
+		mutex = true;
+
+		subMenus.children().not(".btn").fadeOut("fast");
+		$('.dayList').delay("fast").fadeIn();
+		mutex = false;
+	};
+
 });

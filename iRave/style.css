@@ -101,7 +101,7 @@
 	opacity: 0.9;
 }
 
-#notificationsWidget{
+#artistWidget{
 	background-color: pink ;
 	width:0.4in;
 	height: 0.4in;
@@ -115,11 +115,6 @@
 	transition: 1s;
 	opacity: 0.7;
 }
-.notificationsMenu > div {
-	height: 0.3in;
-	margin-top: 0.05in;
-}
-
 
 .btn {
 	display: none;
@@ -289,13 +284,11 @@
 	backface-visibility: hidden;
 	perspective: 1000px;
 	opacity: 0.6;
-
-
 }
 
-.notificationsMenu{
-	display: none;
-}
+
+
+
 .check{
 	display: none;
 	position: relative;
@@ -325,16 +318,6 @@ input:checked ~ .box:after {
     background-color: #ccc;
 }
 
-#divv{
-	display: none;
-	width: 0.9in;
-	height: 0.3in;
-	position: absolute;
-	text-align: center;
-	top:0.3in;
-	left: 0.3in;
-	background-color: pink;
-}
 
 .Map {
 	/*position: relative;*/
@@ -375,3 +358,42 @@ input:checked ~ .box:after {
 		transform: translate3d(0.01in, 0, 0);
 	}
 }
+.artistMenu > div{
+	position: relative;
+	height: 0.30in;
+	width: 80%;
+	border-radius: 0.07in;
+	left: 10%;
+	background-color: #e6e6e6;
+	margin-top: 0.03in;
+	margin-left: 0;
+
+	text-align: center;
+	font-family: Verdana;
+	font-size: 0.13in;
+	transition: 0.3s;
+	opacity: 0.8;
+	line-height: 0.3in;
+}
+.artistMenu > div:hover{
+	opacity: 1;
+}
+
+.dayList > div{
+	position: relative;
+	height: 0.30in;
+	width: 80%;
+	border-radius: 0.07in;
+	left: 10%;
+	background-color: #e6e6e6;
+	margin-top: 0.03in;
+	margin-left: 0;
+
+	text-align: center;
+	font-family: Verdana;
+	font-size: 0.13in;
+	transition: 0.3s;
+	opacity: 0.8;
+	line-height: 0.3in;
+}
+.
