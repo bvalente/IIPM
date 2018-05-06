@@ -10,6 +10,7 @@ jQuery(document).ready(function(){
 	const FRIEND_MENU = 3;
 	const NOT_VIEW = 4;
 	const OPT_MENU = 5;
+	const NOTIFICATION = 6;
 
 	const ASK = 9;
 	const SHARE = 10;
@@ -103,7 +104,18 @@ jQuery(document).ready(function(){
 	}
 
 	$('#notificationsWidget').click(function(){
-		animateWidget();
+		if(mw==SMALL){
+			loadNotificationsMenu();
+
+		} else{
+			animateWidget();
+		}
+
+	})
+	$('#weather').click(function(){
+		option = NOTIFICATION;
+		$(".notificationsMenu").fadeOut("fast");
+		$(".weatherNotification").delay("fast").fadeIn();
 	})
 
 
@@ -189,16 +201,19 @@ jQuery(document).ready(function(){
 		menu = NOT_VIEW;
 
 		console.log(menu);
-
+		$('.Notification').hide();
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
 			clock.children().fadeOut("slow");
 			//add a delay
+			$('.subMenus').delay("slow").fadeIn();
+			$('.friendsMenu').hide();
 			$('.notificationsMenu').delay("slow").fadeIn();
 			$('#back').delay("slow").fadeIn();
 		});
 
 		mutex = false;
 	}
+
 
 	function point_it(event){ //after friends menu
 
@@ -310,7 +325,8 @@ jQuery(document).ready(function(){
 				break;
 
 			case NOT_VIEW:
-				lockScreen();
+				loadMainMenu();
+				//lockScreen();
 				break;
 
 			case OPT_MENU:
@@ -318,6 +334,12 @@ jQuery(document).ready(function(){
 				break;
 			case ASK_MENU:
 				loadFriendsMenu();
+				break;
+			case NOTIFICATION:
+				//hide notification and show notificationsMenu
+				loadNotificationsMenu();
+				break;
+
 
 			default: //error, load main menu
 				console.log('defaulted')

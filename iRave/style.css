@@ -115,6 +115,10 @@
 	transition: 1s;
 	opacity: 0.7;
 }
+.notificationsMenu > div {
+	height: 0.3in;
+	margin-top: 0.05in;
+}
 
 
 .btn {
