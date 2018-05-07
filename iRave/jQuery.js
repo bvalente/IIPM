@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
 	const STAGE_MENU = 20;
 	const STAGE_LIST = 21;
 	const ARTIST_LIST = 22;
-
+	const FAVOURITES = 23;
 
 	const ASK = 9;
 	const SHARE = 10;
@@ -34,6 +34,7 @@ jQuery(document).ready(function(){
 	var friendsList = [];
 	var mw = BIG;
 	var artistList = [];
+	var favArtists = [];
 
 	function lockScreen(){
 		console.log('Locked')
@@ -321,10 +322,15 @@ jQuery(document).ready(function(){
 
 			case STAGE_MENU:
 			case DAY_MENU:
+			case ARTIST_LIST:
 				console.log('SHO');
 				loadArtistMenu();
-	//		case DAY_LIST:
-	//			load
+				break;
+			case DAY_LIST:
+			case STAGE_LIST:
+				loadArtistMenu();
+				break;
+
 			default: //error, load main menu
 				console.log('defaulted')
 				loadMainMenu();
@@ -388,7 +394,9 @@ jQuery(document).ready(function(){
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
 			clock.children().fadeOut("fast");
 			$('.dayList').hide();
+			$('.stageList').hide();
 			$('.friendsMenu').hide();
+			$('.artistList').hide();
 
 			$('.subMenus').delay("fast").fadeIn();
 			$('.artistMenu').delay("fast").fadeIn();
@@ -425,18 +433,40 @@ jQuery(document).ready(function(){
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.stageList').delay("fast").fadeIn();
 	}
+	$('#favouriteArtists').click(function(){
+		menu = FAVOURITES;
+		loadFavourites();
+	})
+	function loadFavourites(){
+		subMenus.children().not(".btn").fadeOut("fast");
+		createArtistList( 2,0);
+	}
 
 	$('#day1').click(function(){
-		createArtistList( true, 1);
+		createArtistList( 0, 1);
 	})
+	$('#day2').click(function(){
+		createArtistList( 0, 2);
+	})
+	// STATIC-PARENT  on  click    DYNAMIC-CHILD
+	$('.artistList').on('click', '.artistView', function(){
+		var id = $(this).attr('id');
+		$.each(artistList, function(index, value){
+			if(value._id == id){
+				console.log("add to fav: " + value._name);
+				favArtists.push(value);
+				//TODO if already in favs we have to remove
+			}
+		});
 
+	})
 	/* explanation
 	primeiro vamos à list de artistas e guradamos todos os que queremos numa lista
 	decidimos se queremos ou nao se forem do dia/palco que é passado como argumento
 	finalmente adicionamos todos os artistas a uma view
 	*/
 	function createArtistList( b, n){
-		//b-> true means day;false means stage
+		//b-> 0 means day;1 means stage;2 means favourites
 		//n-> number of the day/stage
 		var parent = $(".artistList");
 		list = [];
@@ -444,29 +474,40 @@ jQuery(document).ready(function(){
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.artistList').delay("fast").fadeIn();
 		//SHENANIGANS
-		//TODO cleanup artistList before creating divs
-		if(b){ //day
+		parent.empty();//clears the div
+		if(b==0){ //day
 			$.each(artistList, function(index, value){//foreach all artists
 				if(value._day == n){
 					list.push(value);
 				}
 			})
-		} else{ //stage
+		} else if(b==1){ //stage
 			$.each(artistList, function(index, value){//foreach all artists
 				if(value._stage == n){
 					list.push(value);
 				}
 			})
+		} else if (b==2) {
+			list = favArtists.slice();//searched google for this
+		} else {
+			console.log("bug");
+			return;
 		}
 		$.each(list, function(index, value){
-			parent.append("<div class=artistView> <img src="+value._image+"/> "+value._name+" </div>");
+			parent.append("<div class=artistView id="+value._id+
+			"> <img src="+value._image+"/>"+value._name+"</div>");
 		})
 	}
-
+	var artistID = 0;
 	function createArtist(name, image, time, day, stage){
-		var artist = {_name:name, _image:image, _time:time, _day:day, _stage:stage};
+		var id = "a"+artistID.toString();
+		var artist = {_id:artistID, _name:name, _image:image
+			, _time:time, _day:day, _stage:stage
+			, _fav:false};
+		artistID++;
 		artistList.push(artist);
 	}
 
 	createArtist("Arctic Monkeys", "resources/am.jpeg","22:00", 1, 1);
+	createArtist("Pink Floyd", "resources/pink_floyd.png", "23:00", 2 , 1);
 });
