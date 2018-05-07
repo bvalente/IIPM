@@ -517,6 +517,9 @@ jQuery(document).ready(function(){
 		$.each(list, function(index, value){
 			parent.append("<div class=artistView id="+value._id+
 			"> <img src="+value._image+"/>"+value._name+"</div>");
+			if(value._fav){
+				$('#'+value._id).css("background-color", "green");
+			}
 		})
 	}
 	var artistID = 0;
