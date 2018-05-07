@@ -450,18 +450,19 @@ jQuery(document).ready(function(){
 		createArtistList( 1 , 2);
 	})
 	// STATIC-PARENT  on  click    DYNAMIC-CHILD
-	$('.artistList').on('click', '.artistView', function(){
-		var id = $(this).attr('id');
+	$('.artistList').on('click', '.artistView', function(e){
+		var div = $(this);
+		var id = div.attr('id');
 		$.each(artistList, function(index, value){
 			if(value._id == id){
 				if ( value._fav == false ){
 					value._fav = true;
 					console.log("add to fav: " + value._name);
-					$(this).css("background-color","green");
+					div.css('background-color','green');
 					favArtists.push(value);
 				}
 				else{
-					$(this).css("background-color","blue");
+					div.css('background-color','');
 					console.log("remove	from fav: " + value._name);
 					value._fav = false;
 					favArtists.splice(index);
@@ -520,7 +521,6 @@ jQuery(document).ready(function(){
 	}
 	var artistID = 0;
 	function createArtist(name, image, time, day, stage){
-		var id = "a"+artistID.toString();
 		var artist = {_id:artistID, _name:name, _image:image
 			, _time:time, _day:day, _stage:stage
 			, _fav:false};
