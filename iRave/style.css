@@ -378,6 +378,7 @@ input:checked ~ .box:after {
 .artistMenu > div:hover{
 	opacity: 1;
 }
+
 /*Xlist is dayList AND stageList
 assim nao é necessario repetir codigo */
 .Xlist > div{
@@ -397,18 +398,31 @@ assim nao é necessario repetir codigo */
 	opacity: 0.8;
 	line-height: 0.3in;
 }
+.artistList{
+	height: 1.185in;
+	overflow: auto;
+	background-color: #e6e6e6;
+	transition: 1s;
+	border-radius: 0in 0in 0.12in 0.12in;
+}
+/*.artistList p*/
 .artistView{
 	/*copy from friendsList*/
-	height:0.39in;
+	height:0.30in;
 	width: inherit;
+	background-color: #e6e6e6;
+
+	font-family: Verdana;
+	text-align: center;
 	padding-top: 0;
 	margin-top:0in;
-	margin-bottom: 0;
 	border-top-width: 0.01in;
 	border-top-style: solid;
 	border-top-color: black;
 	transition: 1s;
 }
 .artistView img{
-	height: 0.38in;
+	height: 0.30in;
+	width: 0.3in;
+	float: left;
 }

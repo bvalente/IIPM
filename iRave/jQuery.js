@@ -77,14 +77,14 @@ jQuery(document).ready(function(){
 				position: 'absolute',
 				top: '0.1in',
 				left: '0.55in',
-			},0.3);
+			},0.2);
 			$('#artistWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
 				position: 'absolute',
 				bottom:'0.1in',
 				left: '0.35in',
-			},0.3);
+			},0.2);
 			mw = SMALL;
 			return;
 		}
@@ -96,14 +96,14 @@ jQuery(document).ready(function(){
 				position: 'absolute',
 				bottom: '0.1in',
 				left: '0.55in',
-			},0.3);
+			},0.2);
 			$('#mainWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
 				position: 'absolute',
 				top:'0.1in',
 				left: '0.35in',
-			},0.3);
+			},0.2);
 			mw = BIG;
 			return;
 
@@ -178,7 +178,6 @@ jQuery(document).ready(function(){
 	function loadOptionMeetDone(){
 		if(mutex) return;
 		mutex = true;
-		console.log("ehy");
 		subMenus.children().fadeOut("fast");
 		$('#meetMessage').delay("fast").fadeIn();
 		$(".doneButton").delay("fast").fadeIn();
@@ -189,7 +188,6 @@ jQuery(document).ready(function(){
 	function loadOptionAsk(){
 		if(mutex) return;
 		mutex = true;
-		console.log("here");
 
 		subMenus.children().fadeOut("fast");
 		$('#askMessage').delay("fast").fadeIn();
@@ -323,11 +321,9 @@ jQuery(document).ready(function(){
 			case STAGE_MENU:
 			case DAY_MENU:
 			case ARTIST_LIST:
-				console.log('SHO');
-				loadArtistMenu();
-				break;
 			case DAY_LIST:
 			case STAGE_LIST:
+			case FAVOURITES:
 				loadArtistMenu();
 				break;
 
@@ -361,7 +357,7 @@ jQuery(document).ready(function(){
 				} else {
 					loadMainMenu();
 				}
-				console.log(option);
+				//console.log(option);
 
 				break;
 			case OPT_MENU:
@@ -389,7 +385,7 @@ jQuery(document).ready(function(){
 		if (mutex) return;
 		mutex = true;
 
-		console.log(menu + 'fun');
+		menu = ARTIST;
 		$('.Notification').hide();
 		$('#time').animate({top:'0in', opacity:'0.1'}, "slow", function(){
 			clock.children().fadeOut("fast");
@@ -408,7 +404,6 @@ jQuery(document).ready(function(){
 
 	$('#findByDay').click(function(){
 		menu = DAY_MENU;
-		console.log('clciked');
 		loadDayList();
 	});
 
@@ -448,14 +443,24 @@ jQuery(document).ready(function(){
 	$('#day2').click(function(){
 		createArtistList( 0, 2);
 	})
+	$('#stage1').click(function(){
+		createArtistList( 1 , 1);
+	})
+	$('#stage2').click(function(){
+		createArtistList( 1 , 2);
+	})
 	// STATIC-PARENT  on  click    DYNAMIC-CHILD
 	$('.artistList').on('click', '.artistView', function(){
 		var id = $(this).attr('id');
 		$.each(artistList, function(index, value){
 			if(value._id == id){
 				console.log("add to fav: " + value._name);
-				favArtists.push(value);
-				//TODO if already in favs we have to remove
+				if ( value._fav == false ){
+					value._fav = true;
+					favArtists.push(value);
+				}
+				return;
+
 			}
 		});
 
@@ -475,6 +480,7 @@ jQuery(document).ready(function(){
 		$('.artistList').delay("fast").fadeIn();
 		//SHENANIGANS
 		parent.empty();//clears the div
+
 		if(b==0){ //day
 			$.each(artistList, function(index, value){//foreach all artists
 				if(value._day == n){
@@ -488,7 +494,14 @@ jQuery(document).ready(function(){
 				}
 			})
 		} else if (b==2) {
-			list = favArtists.slice();//searched google for this
+			
+			if (favArtists.length == 0){
+				parent.append("<p class=noFavourites> No favourites added. </p>");
+				return;
+			}
+			else{
+				list = favArtists.slice();//searched google for this
+			}
 		} else {
 			console.log("bug");
 			return;
@@ -510,4 +523,5 @@ jQuery(document).ready(function(){
 
 	createArtist("Arctic Monkeys", "resources/am.jpeg","22:00", 1, 1);
 	createArtist("Pink Floyd", "resources/pink_floyd.png", "23:00", 2 , 1);
+	createArtist("Hannah Montana", "resources/hannah_montana.jpg", "21:00", 2 ,2 );
 });
