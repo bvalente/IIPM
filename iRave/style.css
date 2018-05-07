@@ -102,7 +102,7 @@
 }
 
 #artistWidget{
-	background-color: pink ;
+	background-color: #cc0000 ;
 	width:0.4in;
 	height: 0.4in;
 	position: absolute;
@@ -111,9 +111,16 @@
 	left: 0.55in;
 	border-radius: 0.04in;
 
+	background-image: url("resources/iconA1.png");
 	background-size: cover;
 	transition: 1s;
 	opacity: 0.7;
+}
+#artistWidget:hover{
+	background: orange;
+	background-image: url("resources/iconA1.png");
+	background-size: cover;
+	opacity: 0.9;
 }
 
 .btn {
@@ -215,6 +222,7 @@
 	font-size: 0.16in;
 
 }
+
 #mapImage{
 	border-radius: 0.03in 0.03in 0.12in 0.12in;
 
@@ -375,9 +383,7 @@ input:checked ~ .box:after {
 	opacity: 0.8;
 	line-height: 0.3in;
 }
-.artistMenu > div:hover{
-	opacity: 1;
-}
+
 
 /*Xlist is dayList AND stageList
 assim nao é necessario repetir codigo */
@@ -397,6 +403,12 @@ assim nao é necessario repetir codigo */
 	transition: 0.3s;
 	opacity: 0.8;
 	line-height: 0.3in;
+	transition: 1s;
+}
+.artistMenu > div:hover, .XList > div:hover{
+	opacity: 1;
+	font-size: 0.15in;
+	background-color: green;
 }
 .artistList{
 	height: 1.185in;
@@ -413,6 +425,7 @@ assim nao é necessario repetir codigo */
 	background-color: #e6e6e6;
 
 	font-family: Verdana;
+	font-size: 0.13in;
 	text-align: center;
 	padding-top: 0;
 	margin-top:0in;

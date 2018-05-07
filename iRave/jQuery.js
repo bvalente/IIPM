@@ -454,16 +454,23 @@ jQuery(document).ready(function(){
 		var id = $(this).attr('id');
 		$.each(artistList, function(index, value){
 			if(value._id == id){
-				console.log("add to fav: " + value._name);
 				if ( value._fav == false ){
 					value._fav = true;
+					console.log("add to fav: " + value._name);
+					$(this).css("background-color","green");
 					favArtists.push(value);
+				}
+				else{
+					$(this).css("background-color","blue");
+					console.log("remove	from fav: " + value._name);
+					value._fav = false;
+					favArtists.splice(index);
+
 				}
 				return;
 
 			}
 		});
-
 	})
 	/* explanation
 	primeiro vamos à list de artistas e guradamos todos os que queremos numa lista
@@ -494,7 +501,7 @@ jQuery(document).ready(function(){
 				}
 			})
 		} else if (b==2) {
-			
+
 			if (favArtists.length == 0){
 				parent.append("<p class=noFavourites> No favourites added. </p>");
 				return;
