@@ -1,1 +1,1 @@
-3 - melhorar funcionalidades (Apresentar distância ao MeetPoint de todos os amigos/Mostrar posição dos amigos no mapa etc)
+1 - Favourites deve mostrar mais informações sobre detalhes de bandas.
