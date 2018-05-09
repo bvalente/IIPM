@@ -472,7 +472,7 @@ jQuery(document).ready(function(){
 				if ( value._fav == false ){
 					value._fav = true;
 					console.log("add to fav: " + value._name);
-					div.css('background-color','green');
+					div.css('background-color','#ffff1a');
 					favArtists.push(value);
 				}
 				else{
@@ -534,7 +534,7 @@ jQuery(document).ready(function(){
 			parent.append("<div class=artistView id="+value._id+
 			"> <img src="+value._image+"/>"+value._name+"</div>");
 			if(value._fav){
-				$('#'+value._id).css("background-color", "green");
+				$('#'+value._id).css("background-color", "#ffff1a");
 			}
 		})
 	}
@@ -545,9 +545,9 @@ jQuery(document).ready(function(){
 
 		$('.showArtist img').attr('src', artist._image);
 		$('#artistName').text(artist._name);
-		$('#artistStage').text("stage: "+artist._stage);
-		$('#artistDay').text("day: "+artist._day);
-		$('#artistTime').text("time: "+artist._time);
+		$('#artistStage').text("Stage: "+artist._stage);
+		$('#artistDay').text("Day: "+artist._day);
+		$('#artistTime').text("Time: "+artist._time);
 		$('.showArtist div').attr('class', artist._id);
 	}
 

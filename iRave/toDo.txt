@@ -1,1 +1,2 @@
-1 - Favourites deve mostrar mais informações sobre detalhes de bandas.
+1 - Fix css 'No favourites added'
+2 - Fix showArtist css
