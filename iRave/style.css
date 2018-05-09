@@ -443,10 +443,23 @@ assim nao é necessario repetir codigo */
 /*
 	showArtist
 */
+.showArtist{
+	height: 1.185in;
+	overflow: auto;
+	background-color: #e6e6e6;
+	transition: 1s;
+	border-radius: 0in 0in 0.12in 0.12in;
+}
+
 .showArtist img{
-	height: 0.3in;
-	width: 0.3in;
+	
+	height: 0.4in;
+	width: 0.4in;
 }
 .showArtist p{
 	font-size: 0.1in;
+}
+
+#artistName{
+
 }
