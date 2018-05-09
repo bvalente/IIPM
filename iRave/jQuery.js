@@ -465,7 +465,9 @@ jQuery(document).ready(function(){
 					div.css('background-color','');
 					console.log("remove	from fav: " + value._name);
 					value._fav = false;
-					favArtists.splice(index);
+					favArtists = jQuery.grep(favArtists, function(value2) {
+					  return value2 != value;
+					});
 
 				}
 				return;
@@ -502,7 +504,7 @@ jQuery(document).ready(function(){
 				}
 			})
 		} else if (b==2) {
-
+			console.log(favArtists);
 			if (favArtists.length == 0){
 				parent.append("<p class=noFavourites> No favourites added. </p>");
 				return;
