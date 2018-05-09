@@ -452,7 +452,9 @@ assim nao é necessario repetir codigo */
 }
 
 .showArtist img{
-	
+	/*float: middle;*/
+	position: relative;
+    left: 0.5in;
 	height: 0.4in;
 	width: 0.4in;
 }
@@ -460,6 +462,6 @@ assim nao é necessario repetir codigo */
 	font-size: 0.1in;
 }
 
-#artistName{
-
+#artistName, #artistStage, #artistDay, #artistTime{
+	font-size: 0.13in
 }
