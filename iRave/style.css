@@ -439,3 +439,14 @@ assim nao é necessario repetir codigo */
 	width: 0.3in;
 	float: left;
 }
+
+/*
+	showArtist
+*/
+.showArtist img{
+	height: 0.3in;
+	width: 0.3in;
+}
+.showArtist p{
+	font-size: 0.1in;
+}

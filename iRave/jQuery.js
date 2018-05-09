@@ -393,6 +393,7 @@ jQuery(document).ready(function(){
 			$('.stageList').hide();
 			$('.friendsMenu').hide();
 			$('.artistList').hide();
+			$('.showArtist').hide();
 
 			$('.subMenus').delay("fast").fadeIn();
 			$('.artistMenu').delay("fast").fadeIn();
@@ -449,10 +450,23 @@ jQuery(document).ready(function(){
 	$('#stage2').click(function(){
 		createArtistList( 1 , 2);
 	})
+
 	// STATIC-PARENT  on  click    DYNAMIC-CHILD
 	$('.artistList').on('click', '.artistView', function(e){
 		var div = $(this);
 		var id = div.attr('id');
+		var x = $.each(artistList, function(index, value){
+			if(value._id == id){
+				showArtist(value);
+				return true;
+			}
+		});
+		if (!x) console.log("bug showArtist");
+	})
+
+	$('.showArtist div').click(function(e){
+		var div = $(this);
+		var id = div.attr('class');
 		$.each(artistList, function(index, value){
 			if(value._id == id){
 				if ( value._fav == false ){
@@ -524,6 +538,19 @@ jQuery(document).ready(function(){
 			}
 		})
 	}
+
+	function showArtist(artist){
+		subMenus.children().not(".btn").fadeOut("fast");
+		$('.showArtist').delay("fast").fadeIn();
+
+		$('.showArtist img').attr('src', artist._image);
+		$('#artistName').text(artist._name);
+		$('#artistStage').text("stage: "+artist._stage);
+		$('#artistDay').text("day: "+artist._day);
+		$('#artistTime').text("time: "+artist._time);
+		$('.showArtist div').attr('class', artist._id);
+	}
+
 	var artistID = 0;
 	function createArtist(name, image, time, day, stage){
 		var artist = {_id:artistID, _name:name, _image:image
