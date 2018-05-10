@@ -17,6 +17,12 @@ jQuery(document).ready(function(){
 	const STAGE_LIST = 21;
 	const ARTIST_LIST = 22;
 	const FAVOURITES = 23;
+	const SHOWARTIST = 24;
+
+	const DAY1 = 101;
+	const DAY2 = 102;
+	const STAGE1 = 201;
+	const STAGE2 = 202;
 
 	const ASK = 9;
 	const SHARE = 10;
@@ -24,8 +30,8 @@ jQuery(document).ready(function(){
 	const MAP = 12;
 
 	//mainWidget
-	const BIG = 20;
-	const SMALL = 21;
+	const BIG = 40;
+	const SMALL = 41;
 
 	var option = null;
 	var lock = true;
@@ -298,10 +304,9 @@ jQuery(document).ready(function(){
 		nao e necessario fazermos um switch case tao comprido
 		atençao à falta de breaks propositada
 		*/
-		console.log(menu);
+		console.log('back' + menu);
+
 		switch(menu){
-
-
 			case FRIEND_MENU://friend MENU, load friendList
 			case ARTIST:
 			case NOT_VIEW:
@@ -318,13 +323,35 @@ jQuery(document).ready(function(){
 				loadFriendsList();
 				break;
 
-			case STAGE_MENU:
-			case DAY_MENU:
-			case ARTIST_LIST:
+			case SHOWARTIST:
+				if (option == FAVOURITES){
+					loadFavourites();
+				} else if (option == DAY1){
+					console.log('day1');
+					createArtistList(0,1);
+				} else if (option == DAY2) {
+					createArtistList(0,2);
+				} else if (option == STAGE1) {
+					createArtistList(1,1);
+				} else if (option == STAGE2) {
+					createArtistList(1,2);
+				}
+				break;
 			case DAY_LIST:
 			case STAGE_LIST:
+			case STAGE_MENU:
+			case DAY_MENU:
 			case FAVOURITES:
 				loadArtistMenu();
+				break;
+
+			case ARTIST_LIST:
+				//ver dia ou stage
+				if(option <200){
+					loadDayList();
+				} else{
+					loadStageList();
+				}
 				break;
 
 			default: //error, load main menu
@@ -412,7 +439,7 @@ jQuery(document).ready(function(){
 		if(mutex) return;
 		mutex = true;
 
-		menu = DAY_LIST;
+		menu=DAY_MENU;
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.dayList').delay("fast").fadeIn();
 		mutex = false;
@@ -425,7 +452,7 @@ jQuery(document).ready(function(){
 	})
 
 	function loadStageList(){
-		menu = STAGE_LIST;
+		menu=STAGE_MENU;
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.stageList').delay("fast").fadeIn();
 	}
@@ -434,11 +461,17 @@ jQuery(document).ready(function(){
 		loadFavourites();
 	})
 	function loadFavourites(){
+		option = FAVOURITES;
+		menu = FAVOURITES;
 		subMenus.children().not(".btn").fadeOut("fast");
 		createArtistList( 2,0);
 	}
 
 	$('#day1').click(function(){
+		menu = DAY_LIST;
+		option = DAY1;
+		console.log(option + 'is');
+		console.log(menu);
 		createArtistList( 0, 1);
 	})
 	$('#day2').click(function(){
@@ -541,6 +574,7 @@ jQuery(document).ready(function(){
 	}
 
 	function showArtist(artist){
+		menu = SHOWARTIST;
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.showArtist').delay("fast").fadeIn();
 		if (artist._fav == false){
