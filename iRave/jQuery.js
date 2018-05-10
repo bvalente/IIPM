@@ -563,4 +563,10 @@ jQuery(document).ready(function(){
 	createArtist("Arctic Monkeys", "resources/am.jpeg","22:00", 1, 1);
 	createArtist("Pink Floyd", "resources/pink_floyd.png", "23:00", 2 , 1);
 	createArtist("Hannah Montana", "resources/hannah_montana.jpg", "21:00", 2 ,2 );
+	createArtist("Frank Ocean", "resources/Frank-Ocean-square.jpg", "21:00", 1 ,2 );
+	createArtist("Leon Bridges", "resources/Leon-Bridges.jpg", "20:00", 1 ,1 );
+	createArtist("RHPC", "resources/rhpc.png", "23:30", 2 ,2 );
+
+
+
 });

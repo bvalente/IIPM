@@ -378,7 +378,7 @@ input:checked ~ .box:after {
 
 	text-align: center;
 	font-family: Verdana;
-	font-size: 0.13in;
+	font-size: 0.11in;
 	transition: 0.3s;
 	opacity: 0.8;
 	line-height: 0.3in;
@@ -438,7 +438,7 @@ assim nao é necessario repetir codigo */
 	border-top-width: 0.01in;
 	border-top-style: solid;
 	border-top-color: black;
-	/*transition: 1s;*/
+	line-height: 0.3in;
 }
 .artistView img{
 	height: 0.30in;
@@ -471,33 +471,45 @@ assim nao é necessario repetir codigo */
 	text-align: center;
 	border-radius: 0in 0.02in 0.1in 0in;
 	font-style: normal;
-
-	transition:1s;
-
+	font-family: Verdana;
+	border-bottom-width: 0.01in;
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	opacity:0.8;
+	transition: 1s;
 }
 #artistName{
+	margin-bottom: 0.02in;
 	font-weight: bold;
 	text-align: center;
+	border-bottom-width: 0.01in;
+	border-bottom-style: solid;
+	border-bottom-color: black;
 }
 .showArtist div:hover{
-	font-style: italic;
+	opacity: 1;
+}
+.noFavourites{
+	text-align: center;
+	align-self: center;
+	font-family: Verdana;
+
 }
 .artistDetails{
 	font-size: 0.1in;
 	opacity: 0.8;
-	margin-bottom: 0;
-	margin-top: 0;
+	margin-bottom: 0.05in;
+	margin-top: 0.0;
 	top: 0;
 	font-family: Verdana;
 
-	transition: 1s;
+	transition: 10s;
 
 }
 .artistDetails:hover{
 	background-color: blue;
 	opacity: 1;
 }
-
 #artistName, #artistStage, #artistDay, #artistTime{
 	font-size: 0.13in
 }
