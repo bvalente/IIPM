@@ -4,4 +4,8 @@
 
 3 - escolher as tarefas
 
+<<<<<<< HEAD
 4 - Notifications Tab: podemos por artistas favoritos/lista de amigos que partilharam localização/próximo artista a atuar...
+=======
+4 - Notifications Tab: podemos por artistas favoritos
+>>>>>>> 40d93627dd41a8f49968a966838fb6085ec0574c
