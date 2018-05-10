@@ -543,7 +543,11 @@ jQuery(document).ready(function(){
 	function showArtist(artist){
 		subMenus.children().not(".btn").fadeOut("fast");
 		$('.showArtist').delay("fast").fadeIn();
-
+		if (artist._fav == false){
+			$('.showArtist div').css('background-color','#e6e6e6');
+		} else {
+			$('.showArtist div').css('background-color','#ffff1a');
+		}
 		$('.showArtist img').attr('src', artist._image);
 		$('#artistName').text(artist._name);
 		$('#artistStage').text("Stage: "+artist._stage);
