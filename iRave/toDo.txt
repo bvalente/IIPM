@@ -1,2 +1,7 @@
-1 - Fix css 'No favourites added'
-2 - Fix showArtist css
+1 - Quando clicavamos num artista , div aumentava de tamanho e apareciam as opcoes adicionar aos 'favoritos' ou 'ver mais info'.
+
+2 - Meter hora à frente do nome do artista.
+
+3 - escolher as tarefas
+
+4 - Notifications Tab: podemos por artistas favoritos/lista de amigos que partilharam localização/próximo artista a atuar...
