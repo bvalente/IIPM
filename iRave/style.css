@@ -470,11 +470,17 @@ assim nao é necessario repetir codigo */
 	align-self: center;
 	text-align: center;
 	border-radius: 0in 0.02in 0.1in 0in;
+
 	font-style: normal;
 	font-family: Verdana;
+	font-size: 0.12in;
+	line-height: 0.18in;
+
+
 	border-bottom-width: 0.01in;
 	border-bottom-style: solid;
 	border-bottom-color: black;
+	
 	opacity:0.8;
 	transition: 1s;
 }

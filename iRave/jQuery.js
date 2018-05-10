@@ -476,7 +476,7 @@ jQuery(document).ready(function(){
 					favArtists.push(value);
 				}
 				else{
-					div.css('background-color','');
+					div.css('background-color','#e6e6e6');
 					console.log("remove	from fav: " + value._name);
 					value._fav = false;
 					favArtists = jQuery.grep(favArtists, function(value2) {
@@ -536,6 +536,7 @@ jQuery(document).ready(function(){
 			if(value._fav){
 				$('#'+value._id).css("background-color", "#ffff1a");
 			}
+
 		})
 	}
 
