@@ -1,8 +1,5 @@
-tarefas
+TAREFAS:
 
-partilhar a sua localizaçao com o amigo X
-escolher um local para se encontrar com o amigo X
-
-ver a que horas o artista X toca sabendo que é do dia Y
-adicionar o artista X que toca no palco Y na lista da favoritos
-criar uma lista de favoritos com todos os artistas do dia X e consultar a lista
+- partilhar a sua localizaçao com o amigo X
+- adicionar o artista X que toca no palco Y na lista da favoritos
+- criar uma lista de favoritos com todos os artistas do dia X e consultar a lista
