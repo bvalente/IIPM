@@ -1,5 +1,5 @@
 TAREFAS:
 
-- partilhar a sua localizaçao com o amigo X
-- adicionar o artista X que toca no palco Y na lista da favoritos
-- criar uma lista de favoritos com todos os artistas do dia X e consultar a lista
+- partilhar a sua localizaçao com o amigo Josefrino
+- adicionar a artista Hannah Montana que toca no palco 2 à lista da favoritos
+- criar uma lista de favoritos com todos os artistas do dia 1 e consultar a lista
