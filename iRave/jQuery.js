@@ -475,12 +475,18 @@ jQuery(document).ready(function(){
 		createArtistList( 0, 1);
 	})
 	$('#day2').click(function(){
+		menu = DAY_LIST;
+		option = DAY2;
 		createArtistList( 0, 2);
 	})
 	$('#stage1').click(function(){
+		menu = STAGE_LIST;
+		option = STAGE1;
 		createArtistList( 1 , 1);
 	})
 	$('#stage2').click(function(){
+		menu = STAGE_LIST;
+		option = STAGE2;
 		createArtistList( 1 , 2);
 	})
 
