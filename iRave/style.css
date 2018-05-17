@@ -112,14 +112,18 @@
 	border-radius: 0.04in;
 
 	background-image: url("resources/iconA1.png");
-	background-size: cover;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center bottom;
 	transition: 1s;
 	opacity: 0.7;
 }
 #artistWidget:hover{
 	background: orange;
 	background-image: url("resources/iconA1.png");
-	background-size: cover;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center bottom;
 	opacity: 0.9;
 }
 
@@ -403,13 +407,20 @@ assim nao é necessario repetir codigo */
 	transition: 0.3s;
 	opacity: 0.8;
 	line-height: 0.3in;
-	transition: 1s;
+
+	transition: 0.8s;
 }
-.artistMenu > div:hover, .XList > div:hover{
+#day1:hover,#day2:hover,#stage1:hover,#stage2:hover{
 	opacity: 1;
 	font-size: 0.15in;
 	background-color: green;
 }
+.artistMenu > div:hover{
+	opacity: 1;
+	font-size: 0.15in;
+	background-color: green;
+}
+
 .artistList{
 	height: 1.22in;
 	overflow: auto;
@@ -425,11 +436,8 @@ assim nao é necessario repetir codigo */
 }*/
 /*.artistList p*/
 .artistView{
-	/*copy from friendsList*/
 	height:0.30in;
 	width: inherit;
-	/*background-color: #e6e6e6;*/
-
 	font-family: Verdana;
 	font-size: 0.13in;
 	text-align: center;
@@ -439,6 +447,12 @@ assim nao é necessario repetir codigo */
 	border-top-style: solid;
 	border-top-color: black;
 	line-height: 0.3in;
+	transition: 0.8s;
+}
+.artistView:hover{
+	font-size: 0.15in;
+	background-color: lightgreen;
+
 }
 .artistView img{
 	height: 0.30in;
@@ -480,7 +494,7 @@ assim nao é necessario repetir codigo */
 	border-bottom-width: 0.01in;
 	border-bottom-style: solid;
 	border-bottom-color: black;
-	
+
 	opacity:0.8;
 	transition: 1s;
 }
@@ -517,5 +531,16 @@ assim nao é necessario repetir codigo */
 	opacity: 1;
 }
 #artistName, #artistStage, #artistDay, #artistTime{
-	font-size: 0.13in
+	font-size: 0.13in;
+}
+
+#mainWidget p, #artistWidget p{
+	bottom: 1in;
+	display: table-cell;
+	vertical-align: bottom;
+	display: block;
+	margin-bottom: 0;
+	margin-top: 0;
+	font-family: Verdana;
+	font-size: 0.1in;
 }

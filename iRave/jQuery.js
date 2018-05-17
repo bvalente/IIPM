@@ -84,6 +84,7 @@ jQuery(document).ready(function(){
 				top: '0.1in',
 				left: '0.55in',
 			},0.2);
+
 			$('#artistWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
@@ -103,6 +104,7 @@ jQuery(document).ready(function(){
 				bottom: '0.1in',
 				left: '0.55in',
 			},0.2);
+
 			$('#mainWidget').animate({
 				width:'0.8in',
 				height: '0.8in',
@@ -483,6 +485,7 @@ jQuery(document).ready(function(){
 		menu = STAGE_LIST;
 		option = STAGE1;
 		createArtistList( 1 , 1);
+
 	})
 	$('#stage2').click(function(){
 		menu = STAGE_LIST;
