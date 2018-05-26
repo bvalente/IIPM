@@ -1,0 +1,21 @@
+nome: margarida
+idade: 14
+sexo: F
+1-10:computador:7
+1-10:smartwatch:8
+estudante
+
+tarefa 1
+	tempo 17s
+	erros 1
+	SEQ 5
+
+tarefa 2
+	tempo 59s
+	erros 4
+	SEQ 4
+	
+tarefa 3
+	43s
+	erros 0
+	SEQ 5

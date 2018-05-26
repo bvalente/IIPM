@@ -1,0 +1,21 @@
+nome: carolina
+idade: 16
+sexo: F
+1-10:computador:4
+1-10:smartwatch:0
+estudante
+
+tarefa 1
+	tempo 11s
+	erros 0
+	SEQ 6
+
+tarefa 2
+	tempo 22s
+	erros 0
+	SEQ 6
+	
+tarefa 3
+	45s
+	erros 2
+	SEQ 4

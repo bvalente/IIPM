@@ -1,0 +1,21 @@
+nome: carlos
+idade: 63
+sexo: M
+1-10:computador:2
+1-10:smartwatch:0
+professor
+
+tarefa 1
+	tempo 28s
+	erros 1
+	SEQ 3
+
+tarefa 2
+	tempo 47s
+	erros 2
+	SEQ 4
+	
+tarefa 3
+	60s
+	erros 1
+	SEQ 5
